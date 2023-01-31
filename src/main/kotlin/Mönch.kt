@@ -1,4 +1,4 @@
-class Moench(heldenArt: String, name: String, hp: Int) :
+class Mönch(heldenArt: String, name: String, hp: Int) :
     Helden(heldenArt, name, hp) {
 
     override var faehigkeiten = mutableListOf<String>(
