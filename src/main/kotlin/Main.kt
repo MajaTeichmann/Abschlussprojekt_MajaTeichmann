@@ -1,3 +1,6 @@
+var round = 0
+var maxRound = 15
+
 var heldenNamen = mutableListOf<String>(
     "Eltrocus",
     "Kid",
@@ -133,73 +136,112 @@ fun main() {
 
     ////////////HELDEN////////////
     // Magier
-    var held1 = Magier("Magier", heldenNamen.random(), heldenHP.random(), "Beutel")
+    var magier = Magier("Magier", heldenNamen.random(), heldenHP.random(), "Beutel")
 
     // Ritter
-    var held2 = Ritter("Ritter", heldenNamen.random(), heldenHP.random(), "Schwert")
+    var ritter = Ritter("Ritter", heldenNamen.random(), heldenHP.random(), "Schwert")
 
     // Mönch
-    var held3 = Moench("Mönch", heldenNamen.random(), heldenHP.random())
+    var mönch = Moench("Mönch", heldenNamen.random(), heldenHP.random())
 
-    fun begruessung(){
+    //Dragon
+    var dragon = Gegner(dragonNamen.random(), dragonHP.random(), 0)
+
+    fun begruessung() {
         println("Hallo und herzlich Willkommen zu meinem Videospiel!")
         println("Im folgenden Spielverlauf wirst du deine drei Helden und deinen Gegner, einen mächtigen Drachen, kennenlernen.")
         println("Fangen wir an...")
     }
-    fun heldenVorstellung(){
-        println("Hallo, ich bin ${held1.name} und ich bin ein ${held1.heldenArt}.\n")
-        println("""
-            Name:                   ${held1.name}
-            Helden-Art:             ${held1.heldenArt}
-            HP:                     ${held1.hp}
-            Gegenstände:            ${held1.beutel}
-            Fähigkeiten:            ${held1.faehigkeiten}""")
 
-        println("\nHallo, ich bin ${held2.name} und ich bin ein ${held2.heldenArt}.")
-        println("""
-            Name:                   ${held2.name}
-            Helden-Art:             ${held2.heldenArt}
-            HP:                     ${held2.hp}
-            Gegenstände:            
-            Fähigkeiten:            ${held2.faehigkeiten}""")
+    fun heldenVorstellung() {
+        println("Hallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt}.\n")
+        println(
+            """
+            Name:                   ${magier.name}
+            Helden-Art:             ${magier.heldenArt}
+            HP:                     ${magier.hp}
+            Gegenstände:            ${magier.beutel.size} (${magier.beutel})
+            Fähigkeiten:            ${magier.faehigkeiten}"""
+        )
 
-        println("\nHallo, ich bin ${held3.name} und ich bin ein ${held3.heldenArt}.")
-        println("""
-            Name:                   ${held3.name}
-            Helden-Art:             ${held3.heldenArt}
-            HP:                     ${held3.hp}
+        println("\nHallo, ich bin ${ritter.name} und ich bin ein ${ritter.heldenArt}.")
+        println(
+            """
+            Name:                   ${ritter.name}
+            Helden-Art:             ${ritter.heldenArt}
+            HP:                     ${ritter.hp}
             Gegenstände:            
-            Fähigkeiten:            ${held3.faehigkeiten}""")
+            Fähigkeiten:            ${ritter.faehigkeiten}"""
+        )
+
+        println("\nHallo, ich bin ${mönch.name} und ich bin ein ${mönch.heldenArt}.")
+        println(
+            """
+            Name:                   ${mönch.name}
+            Helden-Art:             ${mönch.heldenArt}
+            HP:                     ${mönch.hp}
+            Gegenstände:            
+            Fähigkeiten:            ${mönch.faehigkeiten}"""
+        )
     }
-    fun gegnerVorstellung(){
+
+    fun gegnerVorstellung() {
         println("\nWie stark soll dein Gegner sein?")
         println("Nenne mir hierfür bitte die entsprechende Zahl")
-        println("""
+        println(
+            """
             |[1] für schwach
             |[2] für normal
             |[3] für stark
-        """.trimMargin())
+        """.trimMargin()
+        )
         var input = readln().toInt()
         var schaden = 0
-        when(input){
+        when (input) {
             1 -> schaden = 25
             2 -> schaden = 35
             3 -> schaden = 60
         }
-        var gegner = Gegner(dragonNamen.random(), dragonHP.random(), schaden)
-        println("""
-            Name:                   ${gegner.name}
-            HP:                     ${gegner.hp}
+        dragon = Gegner(dragonNamen.random(), dragonHP.random(), schaden)
+        var dragonKlonFaehigkeit = schaden * 1.5
+        var dragonFlaechenSchaden = faehigkeitsSchaden.random()
+        var dragonStampfAttacke = faehigkeitsSchaden.random()
+        var dragonFeuerRegen = faehigkeitsSchaden.random()
+        println(
+            """
+            Name:                   ${dragon.name}
+            HP:                     ${dragon.hp}
             **********Fähigkeiten:**********
-            ${gegner.faehigkeiten[0]} macht ${schaden*1.5} Schaden, lebt 1 Runde
-            ${gegner.faehigkeiten[1]} ${faehigkeitsSchaden.random()}
-            ${gegner.faehigkeiten[2]} ${schaden}
-            ${gegner.faehigkeiten[3]} zieht zufälligem Helden 5% HP ab (Held -5%, Drache +5% (vom HeldenHP)
-            ${gegner.faehigkeiten[4]} ${faehigkeitsSchaden.random()}
-            ${gegner.faehigkeiten[5]} ${faehigkeitsSchaden.random()}""")
+            ${dragon.faehigkeiten[0]} macht x1.5 Schaden, lebt 1 Runde
+            ${dragon.faehigkeiten[1]} macht Bodenschaden
+            ${dragon.faehigkeiten[2]} Feueratem -> ${schaden}
+            ${dragon.faehigkeiten[3]} zieht zufälligem Helden 5% HP ab (Held -5%, Drache +5% (vom HeldenHP)
+            ${dragon.faehigkeiten[4]} wie Flächenschaden + betäubt getroffene Helden
+            ${dragon.faehigkeiten[5]} lässt 5 Feuerbälle vom Himmelregnen -> zufallsgenerator welche(r) Held(en) getroffen wird/werden"""
+        )
     }
 
-    fun spielStarten(){
+    fun dragonLost() {
+        println("Der Drache ${dragon.name} ist besiegt. Die Helden haben gewonnen!!!\n")
+
+        println("${magier.name}:    ${magier.hp}")
+        println("${ritter.name}:    ${ritter.hp}")
+        println("${mönch.name}:     ${mönch.hp}")
+        println("vs.")
+        println("${dragon.name}: ${dragon.hp}")
+    }
+
+    fun heroesLost() {
+        println("Alle Helden wurden besiegt. Der Drache ${dragon.name} haben gewonnen!!!\n")
+
+        println("${magier.name}:    ${magier.hp}")
+        println("${ritter.name}:    ${ritter.hp}")
+        println("${mönch.name}:     ${mönch.hp}")
+        println("vs.")
+        println("${dragon.name}: ${dragon.hp}")
+    }
+
+    fun spielStarten() {
         begruessung()
         heldenVorstellung()
         gegnerVorstellung()
@@ -207,4 +249,50 @@ fun main() {
 
     spielStarten()
 
+
+    //Nur so dahin geschrieben...
+    println("""
+                Unseren drei tapferen Helden ${magier.name}, ${ritter.name} und ${mönch.name} wandern gerade durch den 
+                nahe gelegenen Märchenwald, als sie auf einen Drachen treffen.
+                Ohne mit der Wimper zu zucken, zieht unser Held ${ritter.name} (${ritter.heldenArt}) sein Schwert und 
+                nähert sich dem Drachen für einen Überraschungsangriff. 
+                Wie erwartet, ging ${ritter.name} nicht leise genug vor und alarmierte somit den Drachen.
+                Erst jetzt konnten unsere drei Helden die Größe ihres Gegners in vollem Umfang erfassen und stellten fest,
+                dass es sich um ${dragon.name} handelt, den mächtigsten und stärksten Drachen im ganzen Land...
+                """.trimIndent()
+    )
+    Thread.sleep(1000)
+    println("3")
+    Thread.sleep(1000)
+    println("2")
+    Thread.sleep(1000)
+    println("1")
+    Thread.sleep(1000)
+    println("Kampf!\n")
+
+    if (round <= maxRound) {
+        round++
+        while (dragon.hp > 0) {
+            println("Runde ${round} startet...\n")
+            println("Unsere Helden fangen an!")
+            if (magier.hp > 0) {
+                println("""
+                    Magier:                 vs.                 Drache:
+                    HP: ${magier.hp}                            ${dragon.hp}
+                    Fähigkeit1                                  Fähigkeit1
+                    Fähigkeit2                                  Fähigkeit2
+                    Fähigkeit3                                  Fähigkeit3
+                                                                Fähigkeit4
+                                                                Fähigkeit5
+                                                                Fähigkeit6
+                """.trimIndent()
+                )
+                var magierAngriff = magier.faehigkeiten.random()
+                println("${magier.name} wählt ${magierAngriff}")
+                println("")
+            }
+
+        }
+        dragonLost()
+    }
 }
