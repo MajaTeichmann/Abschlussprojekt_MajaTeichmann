@@ -1,136 +1,139 @@
-var round = 0
+var currentround = 1
 var maxRound = 15
+var faehigkeitsSchaden: IntRange = 20..80
 
 var heldenNamen = mutableListOf<String>(
-    "Eltrocus",
-    "Kid",
-    "Bat",
-    "Dazzler",
-    "Crow",
-    "Spitfire",
-    "Watcher",
-    "Whiz",
-    "Oxman",
-    "Mole",
-    "Puma",
-    "Wolfman",
-    "Blitzfire",
-    "Deadnite",
-    "Whiz",
-    "General",
-    "Katana",
-    "Colossus",
-    "Shield",
-    "Spider",
-    "Prophet",
-    "Girl",
-    "Wolfman",
-    "Nighthawk",
-    "One",
-    "Wildflame",
-    "Hope",
-    "Kid",
-    "Wonder",
-    "Trident",
-    "Chronos",
-    "Y",
-    "Scout",
-    "Razor",
-    "Dagger",
-    "Manta",
-    "Griffin",
-    "Flare",
-    "Archer",
-    "Slayer",
-    "Soldier",
-    "Illusionist",
-    "Savior",
-    "Spy",
-    "Vindicator",
-    "Amazon",
-    "General",
-    "Leopard",
-    "Knuckles",
-    "Protector",
-    "Gamma",
-    "Mercenary",
-    "Karma",
-    "Grasshopper",
-    "Granite",
-    "Phantasm",
-    "Nightquake",
-    "Magician",
-    "Optimo",
-    "Prophet",
-    "Guardian",
-    "Spectre",
-    "Atomic",
-    "Axeman",
-    "Gargoyle",
-    "Starlight",
-    "Armadillo",
-    "Shield",
-    "Warrior",
-    "Siren",
-    "Saber",
-    "Marksman",
-    "Hammer",
-    "Elemental",
-    "Roach",
-    "Venombite",
-    "Commander",
-    "Commander",
-    "Katana",
-    "Watcher",
-    "Spitfire",
-    "Wonderman",
-    "Mole",
-    "Knight",
-    "Halo",
-    "Manta",
-    "Nightowl",
-    "Dragonloom",
-    "Beetle",
-    "Sentinel",
-    "Incognito",
-    "Crusher",
-    "Sage",
-    "Rosethorn",
-    "Oxman",
-    "Remix",
-    "Nighthawk",
-    "Spitfire",
-    "Gladiator",
-    "Flame"
+        "Eltrocus",
+        "Kid",
+        "Bat",
+        "Dazzler",
+        "Crow",
+        "Spitfire",
+        "Watcher",
+        "Whiz",
+        "Oxman",
+        "Mole",
+        "Puma",
+        "Wolfman",
+        "Blitzfire",
+        "Deadnite",
+        "Whiz",
+        "General",
+        "Katana",
+        "Colossus",
+        "Shield",
+        "Spider",
+        "Prophet",
+        "Girl",
+        "Wolfman",
+        "Nighthawk",
+        "One",
+        "Wildflame",
+        "Hope",
+        "Kid",
+        "Wonder",
+        "Trident",
+        "Chronos",
+        "Y",
+        "Scout",
+        "Razor",
+        "Dagger",
+        "Manta",
+        "Griffin",
+        "Flare",
+        "Archer",
+        "Slayer",
+        "Soldier",
+        "Illusionist",
+        "Savior",
+        "Spy",
+        "Vindicator",
+        "Amazon",
+        "General",
+        "Leopard",
+        "Knuckles",
+        "Protector",
+        "Gamma",
+        "Mercenary",
+        "Karma",
+        "Grasshopper",
+        "Granite",
+        "Phantasm",
+        "Nightquake",
+        "Magician",
+        "Optimo",
+        "Prophet",
+        "Guardian",
+        "Spectre",
+        "Atomic",
+        "Axeman",
+        "Gargoyle",
+        "Starlight",
+        "Armadillo",
+        "Shield",
+        "Warrior",
+        "Siren",
+        "Saber",
+        "Marksman",
+        "Hammer",
+        "Elemental",
+        "Roach",
+        "Venombite",
+        "Commander",
+        "Commander",
+        "Katana",
+        "Watcher",
+        "Spitfire",
+        "Wonderman",
+        "Mole",
+        "Knight",
+        "Halo",
+        "Manta",
+        "Nightowl",
+        "Dragonloom",
+        "Beetle",
+        "Sentinel",
+        "Incognito",
+        "Crusher",
+        "Sage",
+        "Rosethorn",
+        "Oxman",
+        "Remix",
+        "Nighthawk",
+        "Spitfire",
+        "Gladiator",
+        "Flame"
 )
 var heldenHP: IntRange = 300..500
+var faehigkeitsSchadenMagier = faehigkeitsSchaden.random()
+var faehigkeitsSchadenRitter = faehigkeitsSchaden.random()
+var faehigkeitsSchadenMönch = faehigkeitsSchaden.random()
 
 var dragonNamen = mutableListOf<String>(
-    "Smaug",
-    "Glaurung",
-    "Ancalagon",
-    "Drogon",
-    "Viserion",
-    "Rhaegal",
-    "King Ghidorah",
-    "Malefiz",
-    "Jabberwocky",
-    "Fuchur",
-    "Mushu",
-    "Elliot",
-    "Grisu",
-    "Tabaluga",
-    "Ohnezahn",
-    "Sturmpfeil",
-    "Draco",
-    "Saphira",
-    "Glaedr",
-    "Haku",
-    "Shenlong",
-    "Nepomuk"
+        "Smaug",
+        "Glaurung",
+        "Ancalagon",
+        "Drogon",
+        "Viserion",
+        "Rhaegal",
+        "King Ghidorah",
+        "Malefiz",
+        "Jabberwocky",
+        "Fuchur",
+        "Mushu",
+        "Elliot",
+        "Grisu",
+        "Tabaluga",
+        "Ohnezahn",
+        "Sturmpfeil",
+        "Draco",
+        "Saphira",
+        "Glaedr",
+        "Haku",
+        "Shenlong",
+        "Nepomuk"
 )
 var dragonHP: IntRange = 450..650
-var faehigkeitsSchaden: IntRange = 20..80
 
 fun main() {
 
@@ -142,10 +145,11 @@ fun main() {
     var ritter = Ritter("Ritter", heldenNamen.random(), heldenHP.random(), "Schwert")
 
     // Mönch
-    var mönch = Moench("Mönch", heldenNamen.random(), heldenHP.random())
+    var mönch = Mönch("Mönch", heldenNamen.random(), heldenHP.random())
 
     //Dragon
-    var dragon = Gegner(dragonNamen.random(), dragonHP.random(), 0)
+    var dragon = Dragon(dragonNamen.random(), dragonHP.random(), 0)
+    var dragonKlon = Dragon("Klon", dragon.hpKlon, dragon.schadenKlon)
 
     fun begruessung() {
         println("Hallo und herzlich Willkommen zu meinem Videospiel!")
@@ -156,7 +160,7 @@ fun main() {
     fun heldenVorstellung() {
         println("Hallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt}.\n")
         println(
-            """
+                """
             Name:                   ${magier.name}
             Helden-Art:             ${magier.heldenArt}
             HP:                     ${magier.hp}
@@ -166,7 +170,7 @@ fun main() {
 
         println("\nHallo, ich bin ${ritter.name} und ich bin ein ${ritter.heldenArt}.")
         println(
-            """
+                """
             Name:                   ${ritter.name}
             Helden-Art:             ${ritter.heldenArt}
             HP:                     ${ritter.hp}
@@ -176,7 +180,7 @@ fun main() {
 
         println("\nHallo, ich bin ${mönch.name} und ich bin ein ${mönch.heldenArt}.")
         println(
-            """
+                """
             Name:                   ${mönch.name}
             Helden-Art:             ${mönch.heldenArt}
             HP:                     ${mönch.hp}
@@ -189,7 +193,7 @@ fun main() {
         println("\nWie stark soll dein Gegner sein?")
         println("Nenne mir hierfür bitte die entsprechende Zahl")
         println(
-            """
+                """
             |[1] für schwach
             |[2] für normal
             |[3] für stark
@@ -202,13 +206,13 @@ fun main() {
             2 -> schaden = 35
             3 -> schaden = 60
         }
-        dragon = Gegner(dragonNamen.random(), dragonHP.random(), schaden)
+        dragon.schaden = schaden
         var dragonKlonFaehigkeit = schaden * 1.5
         var dragonFlaechenSchaden = faehigkeitsSchaden.random()
         var dragonStampfAttacke = faehigkeitsSchaden.random()
         var dragonFeuerRegen = faehigkeitsSchaden.random()
         println(
-            """
+                """
             Name:                   ${dragon.name}
             HP:                     ${dragon.hp}
             **********Fähigkeiten:**********
@@ -241,6 +245,23 @@ fun main() {
         println("${dragon.name}: ${dragon.hp}")
     }
 
+    fun maxRoundsPlayed() {
+        println("Die maximale Rundenanzahl wurde erreicht\n")
+
+        println("${magier.name}:    ${magier.hp}")
+        println("${ritter.name}:    ${ritter.hp}")
+        println("${mönch.name}:     ${mönch.hp}")
+        println("vs.")
+        println("${dragon.name}: ${dragon.hp}")
+
+        if (magier.hp > dragon.hp || ritter.hp > dragon.hp || mönch.hp > dragon.hp) {
+            dragonLost()
+        } else if (magier.hp < dragon.hp || ritter.hp < dragon.hp || mönch.hp < dragon.hp) {
+            heroesLost()
+        } else
+            println("Unentschieden!!!")
+    }
+
     fun spielStarten() {
         begruessung()
         heldenVorstellung()
@@ -270,29 +291,57 @@ fun main() {
     Thread.sleep(1000)
     println("Kampf!\n")
 
-    if (round <= maxRound) {
-        round++
-        while (dragon.hp > 0) {
-            println("Runde ${round} startet...\n")
+    do {
+        if(dragon.hp > 0){
+            println("Runde ${currentround} startet...\n")
             println("Unsere Helden fangen an!")
             if (magier.hp > 0) {
                 println("""
-                    Magier:                 vs.                 Drache:
-                    HP: ${magier.hp}                            ${dragon.hp}
-                    Fähigkeit1                                  Fähigkeit1
-                    Fähigkeit2                                  Fähigkeit2
-                    Fähigkeit3                                  Fähigkeit3
-                                                                Fähigkeit4
-                                                                Fähigkeit5
-                                                                Fähigkeit6
-                """.trimIndent()
+                    Kämpfer: Magier:                                                                        Drache:
+                    HP:      ${magier.hp}                                           vs.                     ${dragon.hp}
+                             ${magier.faehigkeiten[0]} (schützt vor Schaden)        vs.                     ${dragon.faehigkeiten[0]} (${dragonKlon.hp} HP, ${dragonKlon.schadenKlon})
+                             ${magier.faehigkeiten[1]} (${faehigkeitsSchadenMagier}*2) vs.                  ${dragon.faehigkeiten[1]} (${dragon.flaechenSchaden})
+                             ${magier.faehigkeiten[2]} (${faehigkeitsSchadenMagier}) vs.                    ${dragon.faehigkeiten[2]} (${dragon.feuerAtemSchaden})
+                                                                                                            ${dragon.faehigkeiten[3]} (zieht zufälligem Held 5% HP ab)
+                                                                                                            ${dragon.faehigkeiten[4]} (${dragon.flaechenSchaden} + Betäubung)
+                                                                                                            ${dragon.faehigkeiten[5]} (${dragon.feuerRegenSchaden})""".trimIndent()
                 )
                 var magierAngriff = magier.faehigkeiten.random()
                 println("${magier.name} wählt ${magierAngriff}")
                 println("")
             }
-
+            if (ritter.hp > 0) {
+                println("""
+                    Ritter:                                 vs.                                 Drache:
+                    HP: ${ritter.hp}                                                            ${dragon.hp}
+                    ${ritter.faehigkeiten[0]} (schützt vor Schaden)                             ${dragon.faehigkeiten[0]} (${dragonKlon.hp} HP, ${dragonKlon.schadenKlon})
+                    ${ritter.faehigkeiten[1]} (${faehigkeitsSchadenMagier * 2})                 ${dragon.faehigkeiten[1]} (${dragon.flaechenSchaden})
+                    ${ritter.faehigkeiten[2]} (${faehigkeitsSchadenMagier})                     ${dragon.faehigkeiten[2]} (${dragon.feuerAtemSchaden})
+                                                                                                ${dragon.faehigkeiten[3]} (zieht zufälligem Held 5% HP ab)
+                                                                                                ${dragon.faehigkeiten[4]} (${dragon.flaechenSchaden} + Betäubung)
+                                                                                                ${dragon.faehigkeiten[5]} (${dragon.feuerRegenSchaden})""".trimIndent()
+                )
+                var ritterAngriff = ritter.faehigkeiten.random()
+                println("${ritter.name} wählt ${ritterAngriff}")
+                println("")
+            }
+            if (mönch.hp > 0) {
+                println("""
+                    Ritter:                                 vs.                                 Drache:
+                    HP: ${mönch.hp}                                                            ${dragon.hp}
+                    ${mönch.faehigkeiten[0]} (schützt vor Schaden)                             ${dragon.faehigkeiten[0]} (${dragonKlon.hp} HP, ${dragonKlon.schadenKlon})
+                    ${mönch.faehigkeiten[1]} (${faehigkeitsSchadenMagier * 2})                 ${dragon.faehigkeiten[1]} (${dragon.flaechenSchaden})
+                    ${mönch.faehigkeiten[2]} (${faehigkeitsSchadenMagier})                     ${dragon.faehigkeiten[2]} (${dragon.feuerAtemSchaden})
+                                                                                               ${dragon.faehigkeiten[3]} (zieht zufälligem Held 5% HP ab)
+                                                                                               ${dragon.faehigkeiten[4]} (${dragon.flaechenSchaden} + Betäubung)
+                                                                                               ${dragon.faehigkeiten[5]} (${dragon.feuerRegenSchaden})""".trimIndent()
+                )
+                var mönchAngriff = mönch.faehigkeiten.random()
+                println("${mönch.name} wählt ${mönchAngriff}")
+                println("")
+            }
+            currentround++
         }
-        dragonLost()
     }
+    while(currentround <= maxRound)
 }

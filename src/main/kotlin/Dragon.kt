@@ -1,18 +1,20 @@
 class Dragon(name: String, hp: Int, schaden: Int) : Gegner(name, hp, schaden) {
 
-
-    var hpKlon = hp / 100 * 20
-    var schadenKlon = schaden / 100 * 15
-
+    val hpKlon = hp / 100 * 20
+    val schadenKlon = schaden / 100 * 15
     fun klon() {
         println("${name} hat seinen Klon (zukünftig ${name}(Klon) genannt) heraufbeschworen")
         println("${name}(Klon) hat eine HP von ${hpKlon} und macht ${schadenKlon} Schaden")
     }
 
-    fun flaechenschaden() {
+    val flaechenSchadenRange = 150..300
+    val flaechenSchaden = flaechenSchadenRange.random()
+    fun flaechenSchaden() {
     // macht bodenschaden
     }
 
+    val feuerAtemSchadenRange = 75..100
+    val feuerAtemSchaden = feuerAtemSchadenRange.random()
     fun feueratem() {
     // spuckt feuer
     }
@@ -27,6 +29,8 @@ class Dragon(name: String, hp: Int, schaden: Int) : Gegner(name, hp, schaden) {
     // wie flächenschaden + betäubt getroffene Helden
     }
 
+    var feuerRegenSchadenRange = 25..40
+    var feuerRegenSchaden = feuerRegenSchadenRange.random()
     fun feuerRegen(){
         // lässt 5 Feuerbälle vom Himmelregnen -> zufallsgenerator welche(r) Held(en) getroffen wird/werden
     }
