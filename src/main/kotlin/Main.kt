@@ -574,17 +574,11 @@ fun main() {
         }
     }
 
-    fun magierAngreifen() {
+    fun magierAngreifen() {}
 
-    }
+    fun ritterAngreifen() {}
 
-    fun ritterAngreifen() {
-
-    }
-
-    fun mönchAngreifen() {
-
-    }
+    fun mönchAngreifen() {}
 
     //------------------------------------------------------------------------
     fun spielStarten() {
