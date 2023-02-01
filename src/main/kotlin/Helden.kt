@@ -1,4 +1,4 @@
-open class Helden(var heldenArt: String, var name: String, var hp: Int) {
+open class Helden(var heldenArt: String, var name: String, var hp: Double) {
 
     open var faehigkeiten = mutableListOf<String>()
     open fun showFaehigkeiten(){

@@ -1,37 +1,40 @@
-class Dragon(name: String, hp: Int, schaden: Int) : Gegner(name, hp, schaden) {
+class Dragon(name: String, hp: Double, schaden: Int) : Gegner(name, hp, schaden) {
 
     val hpKlon = hp / 100 * 20
     val schadenKlon = schaden / 100 * 15
     fun klon() {
-        println("${name} hat seinen Klon (zukünftig ${name}(Klon) genannt) heraufbeschworen")
-        println("${name}(Klon) hat eine HP von ${hpKlon} und macht ${schadenKlon} Schaden")
+        println("${name} hat seinen Klon heraufbeschworen")
+        println("Er hat eine HP von ${hpKlon} und macht ${schadenKlon} Schaden")
+        feueratem()
     }
 
     val flaechenSchadenRange = 150..300
     val flaechenSchaden = flaechenSchadenRange.random()
     fun flaechenSchaden() {
-    // macht bodenschaden
+        println("${name} hat seine Attacke 'Flächenschaden' aktivert.")
+        println("Alle lebenden Helden erhalten Schaden.")
     }
 
     val feuerAtemSchadenRange = 75..100
     val feuerAtemSchaden = feuerAtemSchadenRange.random()
     fun feueratem() {
-    // spuckt feuer
+        println("${name} spuckt Feuer und fügt allen lebenden Helden Schaden zu")
     }
 
     fun hpKlau() {
         println("${name} hat seine Fähigkeit 'HP-Klau' aktiviert.")
-        println("(NAME VON HELD) überträgt 5% seiner Gesamt-HP an ${name}")
-        println("Neue HP-Statistik: (HELD1): HP, (HELD2): HP, (HELD3): HP, ${name}: ${hp}")
     }
 
-    fun stampfAttacke(){
-    // wie flächenschaden + betäubt getroffene Helden
+    fun stampfAttacke() {
+        println("${name} hat seine Attacke 'Stampfattacke' aktivert.")
+        println("Alle lebenden Helden erhalten Schaden und werden für 1 Runde betäubt.")
     }
 
     var feuerRegenSchadenRange = 25..40
     var feuerRegenSchaden = feuerRegenSchadenRange.random()
-    fun feuerRegen(){
+    fun feuerRegen() {
+        println("${name} hat seine Attacke 'Feuerregen' aktiviert und spuckt 5 Feuerbälle in den Himmel.")
+        println("Getroffen wurden folgende Helden:")
         // lässt 5 Feuerbälle vom Himmelregnen -> zufallsgenerator welche(r) Held(en) getroffen wird/werden
     }
 }

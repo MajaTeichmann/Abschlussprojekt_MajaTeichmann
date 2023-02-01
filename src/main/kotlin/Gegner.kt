@@ -1,4 +1,4 @@
-open class Gegner(var name: String, var hp: Int, var schaden: Int) {
+open class Gegner(var name: String, var hp: Double, var schaden: Int) {
 
     var faehigkeiten = mutableListOf<String>(
         "Klon heraufbeschwören",

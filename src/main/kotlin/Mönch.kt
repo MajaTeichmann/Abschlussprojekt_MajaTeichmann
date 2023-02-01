@@ -1,4 +1,4 @@
-class Mönch(heldenArt: String, name: String, hp: Int) :
+class Mönch(heldenArt: String, name: String, hp: Double) :
     Helden(heldenArt, name, hp) {
 
     override var faehigkeiten = mutableListOf<String>(
@@ -6,6 +6,8 @@ class Mönch(heldenArt: String, name: String, hp: Int) :
         "Meditation",   // Selbstheilung durch Meditation um 5% -> 1x möglich
         "Schockwelle"   // Schockwelle entsenden
     )
+
+    var selbstHeilungHutzbarkeit = true
 
     override fun showFaehigkeiten() {
         println("${name}'s Fähigkeiten:")

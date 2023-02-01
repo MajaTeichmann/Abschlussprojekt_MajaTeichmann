@@ -1,4 +1,4 @@
-class Ritter(heldenArt: String, name: String, hp: Int, item: String) :
+class Ritter(heldenArt: String, name: String, hp: Double, item: String) :
     Helden(heldenArt, name, hp) {
 
     override var faehigkeiten = mutableListOf<String>(
@@ -6,6 +6,10 @@ class Ritter(heldenArt: String, name: String, hp: Int, item: String) :
         "Schutzschild (Blockt Angriff)",        // Blockt Angriff ab (zerbricht, wenn Zustand <=0)
         "normaler Angriff"
     )
+
+    var harterSchlag = true
+    var schutzSchildNutzbarkeit = true
+    var zustandSchutzSchild = 5
 
     override fun showFaehigkeiten() {
         println("${name}'s Fähigkeiten:")
