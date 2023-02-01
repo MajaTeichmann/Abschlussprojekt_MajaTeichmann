@@ -275,8 +275,7 @@ fun main() {
         } else
             println("Unentschieden!!!")
     }
-
-
+    
     fun alleHeldenGreifenAn() {
         if (magier.hp > 0) {
             println(
@@ -381,7 +380,6 @@ fun main() {
     }
 
     var dragonAngriff = dragon.faehigkeiten.random()
-
 
     fun alleHeldenAngreifen() {
         if (dragonAngriff == dragon.faehigkeiten[0]) {
@@ -576,28 +574,28 @@ fun main() {
         }
     }
 
-    fun magierAngreifen(){
+    fun magierAngreifen() {
 
     }
 
-    fun ritterAngreifen(){
+    fun ritterAngreifen() {
 
     }
 
-    fun mönchAngreifen(){
+    fun mönchAngreifen() {
 
     }
 
-//------------------------------------------------------------------------
-fun spielStarten() {
-    begruessung()
-    heldenVorstellung()
-    gegnerVorstellung()
+    //------------------------------------------------------------------------
+    fun spielStarten() {
+        begruessung()
+        heldenVorstellung()
+        gegnerVorstellung()
 
 
-    //Nur so dahin geschrieben...
-    println(
-        """
+        //Nur so dahin geschrieben...
+        println(
+            """
                 Unseren drei tapferen Helden ${magier.name}, ${ritter.name} und ${mönch.name} wandern gerade durch den 
                 nahe gelegenen Märchenwald, als sie auf einen Drachen treffen.
                 Ohne mit der Wimper zu zucken, zieht unser Held ${ritter.name} (${ritter.heldenArt}) sein Schwert und 
@@ -606,19 +604,19 @@ fun spielStarten() {
                 Erst jetzt konnten unsere drei Helden die Größe ihres Gegners in vollem Umfang erfassen und stellten fest,
                 dass es sich um ${dragon.name} handelt, den mächtigsten und stärksten Drachen im ganzen Land...
                 """.trimIndent()
-    )
-    Thread.sleep(1000)
-    println("3")
-    Thread.sleep(1000)
-    println("2")
-    Thread.sleep(1000)
-    println("1")
-    Thread.sleep(1000)
-    println("Kampf!\n")
+        )
+        Thread.sleep(1000)
+        println("3")
+        Thread.sleep(1000)
+        println("2")
+        Thread.sleep(1000)
+        println("1")
+        Thread.sleep(1000)
+        println("Kampf!\n")
 
-    alleHeldenGreifenAn()
+        alleHeldenGreifenAn()
 
-}
+    }
 
     spielStarten()
     fun dracheGreiftAn() {
