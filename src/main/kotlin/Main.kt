@@ -275,7 +275,7 @@ fun main() {
         } else
             println("Unentschieden!!!")
     }
-    
+
     fun alleHeldenGreifenAn() {
         if (magier.hp > 0) {
             println(
