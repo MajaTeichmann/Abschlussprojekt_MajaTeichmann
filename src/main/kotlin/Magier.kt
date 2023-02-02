@@ -1,6 +1,13 @@
 class Magier(heldenArt: String, name: String, hp: Double, item: String) :
     Helden(heldenArt, name, hp) {
 
+    var schutzschildNutzbarkeit = true
+    var doppelterSchadenNutzbarkeit = true
+    var magierAngriff: String = ""
+    var schutzschildGezogen = false
+    var schutzSchildMöglich = 0
+
+
     override var faehigkeiten = mutableListOf<String>(
         "expecto scutum (Schutzschild)",        // erwarte Schutzschild (schützt 1 Runde Zauberer und alle Mitstreiter) 1x alle 3 Runden nutzbar
         "duplex damnum (doppelter Schaden)",    // verdopple Schaden (schickt verursachten Schaden durch Gegner  zurück und verdoppelt diesen, 3 Runden Abklingzeit)
@@ -14,9 +21,6 @@ class Magier(heldenArt: String, name: String, hp: Double, item: String) :
         "Heilzauber", // heilt Anwender einmalig um 10% Gesamt-HP (mind. 5 HP)
         "Betaeubungszauber" // Betäubt Gegner 1 Runde und macht 2% Gesamtschaden)
     )
-
-    var schutzschildNutzbarkeit = true
-    var doppelterSchadenNutzbarkeit = true
 
     override fun showFaehigkeiten() {
         println("${name}'s Fähigkeiten:")
