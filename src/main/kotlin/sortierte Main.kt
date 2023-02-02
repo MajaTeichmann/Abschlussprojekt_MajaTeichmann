@@ -453,6 +453,12 @@ fun main() {
         }
         println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
     }
+    fun ritterAngriff(){
+
+    }
+    fun moenchAngriff(){
+
+    }
 
 
 
