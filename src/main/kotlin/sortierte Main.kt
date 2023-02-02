@@ -1,8 +1,11 @@
 fun main() {
-    // Generelle Einstellungen
+/////////// Generelle Einstellungen //////////
     var aktuelleRunde = 0
     val maximaleRunden = 5
+/////////////////////////////////////////////
 
+
+////////// VARIABLEN/KONSTANTEN -> HELDEN //////////
     val heldenListe = listOf<String>("Magier", "Ritter", "Mönch")
     val randomHeld = heldenListe.random()
     val heldenNamen = mutableListOf<String>(
@@ -109,7 +112,11 @@ fun main() {
     )
     val faehigkeitsSchaden: IntRange = 20..80
     val heldenHP: IntRange = 300..500
+///////////////////////////////////////////////////
 
+
+//////////////////// VARIABLEN/KONSTANTEN -> GEGNER ////////////////////
+//////////////////// DRACHE ////////////////////
     val dragonNamen = mutableListOf<String>(
         "Smaug",
         "Glaurung",
@@ -139,38 +146,67 @@ fun main() {
     val hpDragon3: IntRange = 860..1100
     val dragonFaehigkeitsSchaden: IntRange = 20..80
     val nameDrache = dragonNamen.random()
-    val dragonHP1 = hpDragon1.random().toDouble()
+    var dragonHP1 = hpDragon1.random().toDouble()
     val dragonHP2 = hpDragon2.random().toDouble()
     val dragonHP3 = hpDragon3.random().toDouble()
-    val dragonKlonHP1 = dragonHP1 + (dragonHP1* 0.2)
+////////////////////////////////////////////////
+
+//////////////////// KLON ////////////////////
+    val dragonKlonHP1 = dragonHP1 + (dragonHP1 * 0.2)
     val dragonKlonHP2 = dragonHP2 + (dragonHP2 * 0.25)
     val dragonKlonHP3 = dragonHP3 + (dragonHP3 * 0.3)
     val dragonSchaden1 = dragonFaehigkeitsSchaden.random()
     val dragonSchaden2 = dragonFaehigkeitsSchaden.random()
     val dragonSchaden3 = dragonFaehigkeitsSchaden.random()
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
-    //Objekte festlegen
-    //HELDEN
+
+    //////////////////// Objekte festlegen ////////////////////
+////////// HELDEN //////////
     val magier = Magier("Magier", heldenNamen.random(), heldenHP.random().toDouble(), "Beutel")
     val ritter = Ritter("Ritter", heldenNamen.random(), heldenHP.random().toDouble(), "Schwert")
     val moench = Mönch("Mönch", heldenNamen.random(), heldenHP.random().toDouble())
 
-    // GEGNER
+//////////////////// MAGIER ////////////////////
+    val magierAngriff = magier.faehigkeiten.random()
+    val faehigkeitsSchadenMagier = faehigkeitsSchaden.random()
+///////////////////////////////////////////////////
+
+
+//////////////////// RITTER ////////////////////
+    val ritterAngriff = ritter.faehigkeiten.random()
+    val faehigkeitsSchadenRitter = faehigkeitsSchaden.random()
+///////////////////////////////////////////////////
+
+
+//////////////////// MÖNCH ////////////////////
+    val moenchAngriff = moench.faehigkeiten.random()
+    val faehigkeitsSchadenMoench = faehigkeitsSchaden.random()
+///////////////////////////////////////////////////
+
+////////////////////////////
+
+
+////////// GEGNER //////////
     //Schwierigkeitsstufe [1]
     val dragonKlonSchaden1: Double = dragonSchaden1 + (dragonSchaden1 * 0.1)
     val drache1 = Dragon(nameDrache, dragonHP1, dragonSchaden1.toDouble())
     var klon1 = DragonKlon(nameDrache, dragonKlonHP1, dragonKlonSchaden1)
+
     //Schwierigkeitsstufe [2]
     val dragonKlonSchaden2: Double = dragonSchaden2 + (dragonSchaden2 * 0.15)
     val drache2 = Dragon(nameDrache, dragonHP2, dragonSchaden2.toDouble())
     var klon2 = DragonKlon(nameDrache, dragonKlonHP2, dragonKlonSchaden2)
+
     //Schwierigkeitsstufe [3]
     val dragonKlonSchaden3: Double = dragonSchaden3 + (dragonSchaden3 * 0.2)
     val drache3 = Dragon(nameDrache, dragonHP3, dragonSchaden3.toDouble())
     var klon3 = DragonKlon(nameDrache, dragonKlonHP3, dragonKlonSchaden3)
+/////////////////////////////
 
 
-    //----------------------------------
+    //----------------------------------------------------------------------------------------------------------------------
     // Pausenmenü-Eingabe [1]
     fun magier() {
         println("\nHallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt}.\n")
@@ -363,4 +399,61 @@ fun main() {
     }
 
     start()
+//----------------------------------------------------------------------------------------------------------------------
+
+    println("Der Kampf beginnt in")
+    Thread.sleep(1000)
+    println("\n3")
+    Thread.sleep(1000)
+    println("\n2")
+    Thread.sleep(1000)
+    println("\n1")
+    Thread.sleep(1000)
+    println("\nGO!")
+
+    fun magierAngriff() {
+        println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+        when (magierAngriff) {
+            magier.faehigkeiten[0] -> {
+                if (magier.abklingzeitSchutzSchild == 0) {
+                    magier.schutzschildGezogen = true
+                    println("${magier.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
+                    if (magier.schutzschildGezogen) {
+                        magier.schutzschildNutzbarkeit = false
+                        magier.schutzSchildMöglich = false
+                        magier.unverwundbar = true
+                        magier.abklingzeitSchutzSchild = 3
+                    }
+                } else {
+                    println("${magier.name} wollte sein Schutzschild einsetzen. Dieser hat aber noch ${magier.abklingzeitSchutzSchild} Runde Abklingzeit.")
+                    println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
+                    dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
+                }
+            }
+
+            magier.faehigkeiten[1] -> {
+                if(magier.abklingzeitDoppelterSchaden == 0){
+                    magier.doppelterSchadenNutzbarkeit = false
+                    println("${magier.name} setzt seinen Schadenverdopplungszauber ein und schickt verursachten Schaden durch ${drache1.name} zurück und verdoppelt diesen.")
+                    if (!magier.doppelterSchadenNutzbarkeit) {
+                        magier.doppelterSchadenEingesetzt = true
+                        magier.abklingzeitDoppelterSchaden = 3
+                    }
+                }else{
+                    println("${magier.name} wollte seinen Schadenverdopplungszauber einsetzen. Dieser hat aber noch ${magier.abklingzeitDoppelterSchaden} Runde Abklingzeit.")
+                    println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
+                    dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
+                }
+            }
+
+            magier.faehigkeiten[2] -> {
+                println("${magier.name} setzt seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
+                dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
+            }
+        }
+        println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+    }
+
+
+
 }
