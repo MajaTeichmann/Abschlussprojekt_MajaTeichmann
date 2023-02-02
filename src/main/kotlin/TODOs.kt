@@ -1,5 +1,6 @@
 //TODO:
-// (1) FähigkeitsSchaden aller Fähigkeiten festlegen
+// (1) variablen/konstanten in Klassen sortieren
+// (2) FähigkeitsSchaden aller Fähigkeiten festlegen
 /*
 dragon.schaden = schaden
         var dragonKlonFaehigkeit = schaden * 1.5
@@ -21,7 +22,7 @@ dragon.schaden = schaden
     }
  */
 
-//TODO: (2) funktionen, wenn drache verloren hat, erstellen
+//TODO: (3) funktionen, wenn drache verloren hat, erstellen
 /*
     fun dragonLost() {
         println("Der Drache ${dragon.name} ist besiegt. Die Helden haben gewonnen!!!\n")
@@ -33,7 +34,7 @@ dragon.schaden = schaden
         println("${dragon.name}: ${dragon.hp}")
     }
  */
-//TODO: (3) funktionen, wenn die helden verloren haben, erstellen
+//TODO: (4) funktionen, wenn die helden verloren haben, erstellen
 /*
     fun heroesLost() {
         println("Alle Helden wurden besiegt. Der Drache ${dragon.name} haben gewonnen!!!\n")
@@ -46,7 +47,7 @@ dragon.schaden = schaden
     }
  */
 
-//TODO: (4) funktion, wenn maxRunden gespielt sind, erstellen
+//TODO: (5) funktion, wenn maxRunden gespielt sind, erstellen
 /*
     fun maxRoundsPlayed() {
         println("Die maximale Rundenanzahl wurde erreicht\n")
@@ -66,8 +67,8 @@ dragon.schaden = schaden
     }
  */
 
-//TODO: (5) funktionen, wenn 1 Held <=0 HP hat, erstellen
-// (6) funktionen, wenn 2 Helden <=0 HP haben, erstellen
+//TODO: (6) funktionen, wenn 1 Held <=0 HP hat, erstellen
+// (7) funktionen, wenn 2 Helden <=0 HP haben, erstellen
 /*
 
     fun alleHeldenGreifenAn() {
@@ -330,6 +331,4 @@ dragon.schaden = schaden
                     Mönch: ${mönch.hp}
                 """.trimIndent()
  */
-
-
 //-------------------------------------------------------------------
