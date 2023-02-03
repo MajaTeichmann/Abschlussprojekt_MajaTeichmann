@@ -7,8 +7,9 @@ fun main() {
 
 
 ////////// VARIABLEN/KONSTANTEN -> HELDEN //////////
-    val heldenListe = listOf<String>("Magier", "Ritter", "Mönch")
-    val randomHeld = heldenListe.random()
+    val randomHeld = AussortierteVariablenUndKonstanten().heldenListe.random()
+
+    //AB HIER AUSSORTIEREN!!!!
     val heldenNamen = mutableListOf<String>(
         "Eltrocus",
         "Kid",
