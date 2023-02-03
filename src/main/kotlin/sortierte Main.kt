@@ -2,6 +2,7 @@ fun main() {
 /////////// Generelle Einstellungen //////////
     var aktuelleRunde = 0
     val maximaleRunden = 5
+    var inputSchwierigkeitsstufeGegener = ""
 /////////////////////////////////////////////
 
 
@@ -116,6 +117,7 @@ fun main() {
 
 
 //////////////////// VARIABLEN/KONSTANTEN -> GEGNER ////////////////////
+    var verursachterSchaden = 0.0
 //////////////////// DRACHE ////////////////////
     val dragonNamen = mutableListOf<String>(
         "Smaug",
@@ -141,6 +143,15 @@ fun main() {
         "Shenlong",
         "Nepomuk"
     )
+    val drachenFaehigkeiten = mutableListOf(
+        "Klon",
+        "Flächenschaden",
+        "Feueratem",
+        "HP Klau",
+        "Stampfattacke",
+        "Feuerregen"
+    )
+    var randomDrachenAngriff = drachenFaehigkeiten.random()
     val hpDragon1: IntRange = 450..650
     val hpDragon2: IntRange = 660..850
     val hpDragon3: IntRange = 860..1100
@@ -204,209 +215,13 @@ fun main() {
 
 
     //----------------------------------------------------------------------------------------------------------------------
-    // Pausenmenü-Eingabe [1]
-    fun magier() {
-        println("\nHallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt}.\n")
-        Thread.sleep(1000)
-        println("\nName:                   ${magier.name}")
-        Thread.sleep(1000)
-        println("Helden-Art:             ${magier.heldenArt}")
-        Thread.sleep(1000)
-        println("HP:                     ${magier.hp}")
-        Thread.sleep(1000)
-        println("Gegenstände:            ${magier.beutel.size} im Beutel (Beutelinhalt: ${magier.beutel})")
-        Thread.sleep(1000)
-        println("Fähigkeiten:            ${magier.faehigkeiten}")
+
+    fun dragonLost(){
+        println("Der Drache ist tot und die Helden haben gewonnen!")
         println()
-        println()
+        println("\nDas Spiel ist vorbei!")
     }
 
-    fun ritter() {
-        println("\nHallo, ich bin ${ritter.name} und ich bin ein ${ritter.heldenArt}.\n")
-        Thread.sleep(1000)
-        println("\nName:                   ${ritter.name}")
-        Thread.sleep(1000)
-        println("Helden-Art:             ${ritter.heldenArt}")
-        Thread.sleep(1000)
-        println("HP:                     ${ritter.hp}")
-        Thread.sleep(1000)
-        println("Gegenstände:            Schwert")
-        Thread.sleep(1000)
-        println("Fähigkeiten:            ${ritter.faehigkeiten}")
-        println()
-        println()
-    }
-
-    fun moench() {
-        println("\nHallo, ich bin ${moench.name} und ich bin ein ${moench.heldenArt}.\n")
-        Thread.sleep(1000)
-        println("\nName:                   ${moench.name}")
-        Thread.sleep(1000)
-        println("Helden-Art:             ${moench.heldenArt}")
-        Thread.sleep(1000)
-        println("HP:                     ${moench.hp}")
-        Thread.sleep(1000)
-        println("Gegenstände:            KEINE")
-        Thread.sleep(1000)
-        println("Fähigkeiten:            ${moench.faehigkeiten}")
-        println()
-        println()
-    }
-
-    // Pausenmenü-Eingabe [2]
-    fun drache() {
-        println("\nBevor ich dir deinen Gegner vorstellen kann, möchte ich wissen, wie stark er sein soll.")
-        Thread.sleep(1000)
-        println("\nWir haben 3 Schwierigkeitsstufen")
-        Thread.sleep(1000)
-        println("[1] leicht")
-        Thread.sleep(1000)
-        println("[2] normal")
-        Thread.sleep(1000)
-        println("[3] schwer")
-        Thread.sleep(1000)
-        println("\nBitte tippe nun die Schwierigkeitsstufe deiner Wahl ein:")
-
-        var inputSchwierigkeitsstufe = readln()
-
-        println("Gegner wird generiert")
-        Thread.sleep(1000)
-        println("...")
-        Thread.sleep(1000)
-        println("...")
-        Thread.sleep(1000)
-        println("...")
-        Thread.sleep(1000)
-        println("\nGegner wurde generiert!")
-
-        when (inputSchwierigkeitsstufe) {
-            "1" -> {
-                Thread.sleep(1000)
-                println("Name:                   ${drache1.name}")
-                Thread.sleep(1000)
-                println("HP:                     ${dragonHP1}")
-                Thread.sleep(1000)
-                println("Fähigkeiten:")
-                Thread.sleep(1000)
-                println()
-                println("${drache1.faehigkeiten[0]} -> Klon: ${dragonKlonHP1} HP, ${dragonKlonSchaden1} Schaden")
-                Thread.sleep(1000)
-                println(drache1.faehigkeiten[1])
-                Thread.sleep(1000)
-                println(drache1.faehigkeiten[2])
-                Thread.sleep(1000)
-                println(drache1.faehigkeiten[3])
-                Thread.sleep(1000)
-                println(drache1.faehigkeiten[4])
-                Thread.sleep(1000)
-                println(drache1.faehigkeiten[5])
-                Thread.sleep(1000)
-                println()
-            }
-        }
-    }
-
-    fun einleitung() {
-        println("Unseren drei tapferen Helden")
-        Thread.sleep(1000)
-        println(magier.name)
-        Thread.sleep(1000)
-        println(ritter.name)
-        Thread.sleep(1000)
-        println("und ${moench.name}")
-        println("wandern gerade durch den nahe gelegenen Märchenwald, als sie auf einen Drachen treffen.")
-        Thread.sleep(1000)
-        println("Ohne mit der Wimper zu zucken, zieht unser Held ")
-        Thread.sleep(1000)
-        println("${ritter.heldenArt} ${ritter.name}")
-        println("sein Schwert und nähert sich dem Drachen für einen Überraschungsangriff. ")
-        Thread.sleep(1000)
-        println("Wie erwartet, ging")
-        Thread.sleep(1000)
-        println(ritter.name)
-        println("nicht leise genug vor und alarmierte somit den Drachen.")
-        Thread.sleep(1000)
-        println("Erst jetzt konnten unsere drei Helden die Größe ihres Gegners in vollem Umfang erfassen und stellten fest, dass es sich um ")
-        Thread.sleep(500)
-        println(drache1.name)
-        Thread.sleep(500)
-        println("handelt, den mächtigsten und stärksten Drachen im ganzen Land...")
-        Thread.sleep(5000)
-        println("Der Kampf beginnt in")
-        Thread.sleep(1000)
-        println("\n3")
-        Thread.sleep(1000)
-        println("\n2")
-        Thread.sleep(1000)
-        println("\n1")
-        Thread.sleep(1000)
-        println("\nGO!")
-    }
-
-    fun spielStarten() {
-        einleitung()
-    }
-
-    fun spielBeenden() {
-
-    }
-
-    fun pausenmenue() {
-        println("PAUSENMENÜ\n")
-        println("Was möchtest du tun?\n")
-        println(
-            """
-            [1] Helden kennenlernen
-            [2] Drache kennenlernen
-            [3] Spiel starten
-            [4] Spiel beenden
-        """.trimIndent()
-        )
-
-        var inputPausenmenue = readln()
-
-        when (inputPausenmenue) {
-            "1" -> {
-                magier()
-                Thread.sleep(5000)
-                ritter()
-                Thread.sleep(5000)
-                moench()
-            }
-
-            "2" -> {
-                drache()
-            }
-
-            "3" -> {
-                spielStarten()
-            }
-
-            "4" -> {
-                spielBeenden()
-            }
-        }
-        Thread.sleep(1000)
-        pausenmenue()
-    }
-
-    fun begruessung() {
-        println("Hallo und herzlich Willkommen zu meinem Videospiel!")
-        Thread.sleep(1000)
-        println("Im folgenden Spielverlauf wirst du deine drei Helden und deinen Gegner, einen mächtigen Drachen, kennenlernen.")
-        Thread.sleep(1000)
-        println("Fangen wir an...\n")
-        Thread.sleep(1000)
-
-        pausenmenue()
-    }
-
-    fun start() {
-        begruessung()
-    }
-
-    start()
-//----------------------------------------------------------------------------------------------------------------------
 
     // GegnerSchwierigkeitsStufe 1
     fun magierAngriffStufe1() {
@@ -462,6 +277,7 @@ fun main() {
             return magierAngriffStufe1()
         }
     }
+
     fun ritterAngriffStufe1() {
         println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
         println("Wähle eine Ritter-Fähigkeit")
@@ -476,7 +292,6 @@ fun main() {
                     ritter.schutzschildGezogen = true
                     println("${ritter.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
                     if (ritter.zustandSchutzSchild > 0) {
-                        ritter.zustandSchutzSchild--
                         if (ritter.schutzschildGezogen && ritter.schutzSchildNutzbarkeit) {
                             ritter.unverwundbar = true
                         }
@@ -511,6 +326,7 @@ fun main() {
             return ritterAngriffStufe1()
         }
     }
+
     fun moenchAngriffStufe1() {
         println("Mönch HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
         println("Wähle eine Mönch-Fähigkeit")
@@ -530,7 +346,7 @@ fun main() {
                             moench.schwebenAbklingdauer = 4
                         }
                     } else {
-                        println("${moench.name} hat seine Fähigkeit bereits vor ${4- moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
+                        println("${moench.name} hat seine Fähigkeit bereits vor ${4 - moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
                         println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache1.name} ${faehigkeitsSchadenMoench} Schaden.")
                         dragonHP1 = dragonHP1 - faehigkeitsSchadenMoench
                     }
@@ -539,7 +355,7 @@ fun main() {
                 "2" -> {
                     if (moench.selbstHeilungNutzbarkeit) {
                         moench.selbstHeilungNutzbarkeit = false
-                        var selbstHeilung = (moench.hp*0.05)+moench.hp
+                        var selbstHeilung = (moench.hp * 0.05) + moench.hp
                         println("${moench.name} setzt seine Selbstheilungskräfte ein und erhält +${selbstHeilung} HP.")
                         moench.hp = moench.hp + selbstHeilung
                     } else {
@@ -561,6 +377,142 @@ fun main() {
         }
     }
 
+    fun drachenAngriffStufe1() {
+        println("Drache ${drache1.name} wählt Angriff:")
+        Thread.sleep(1000)
+        if (randomDrachenAngriff == drachenFaehigkeiten[0]) {
+            println("${drache1.name}'s Klon erscheint...")
+            if (magier.hp > 0) {
+                println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                if (magier.schutzschildGezogen) {
+                    println("Die Angriffe vom Drachen und seinem Klon sind an ${magier.name}'s Schutzschild abgeprallt")
+                    magier.schutzschildGezogen = false
+                    magier.unverwundbar = false
+                    magier.abklingzeitSchutzSchild--
+                    if (magier.abklingzeitSchutzSchild == 0) {
+                        magier.schutzSchildMöglich = true
+                        magier.schutzschildNutzbarkeit = true
+                    } else {
+                        magier.schutzSchildMöglich = false
+                        magier.schutzschildNutzbarkeit = false
+                    }
+                    println("\nMagier HP: ${magier.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                } else {
+                    println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                    println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                    verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
+                    Thread.sleep(1000)
+                    magier.hp = (magier.hp - verursachterSchaden)
+                    println("\nMagier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+
+                }
+            }
+            if (ritter.hp > 0) {
+                println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                if (ritter.schutzschildGezogen) {
+                    println("Die Angriffe vom Drachen und seinem Klon sind an ${ritter.name}'s Schutzschild abgeprallt")
+                    ritter.schutzschildGezogen = true
+                    ritter.unverwundbar = true
+                    ritter.zustandSchutzSchild--
+                    if (ritter.zustandSchutzSchild == 0) {
+                        ritter.schutzSchildNutzbarkeit = false
+                        ritter.schutzschildGezogen = false
+                        ritter.unverwundbar = false
+                    }
+                    println("\nRitter HP: ${magier.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                } else {
+                    println("Ritter HP: ${magier.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                    println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                    verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
+                    Thread.sleep(1000)
+                    ritter.hp = (ritter.hp - verursachterSchaden)
+                    println("\nRitter HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                }
+            }
+            if (moench.hp > 0) {
+                println("Mönch HP: ${magier.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                if (moench.schwebenAktiv) {
+                    moench.schwebenAbklingdauer--
+                }
+                verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
+                Thread.sleep(1000)
+                moench.hp = (moench.hp - verursachterSchaden)
+                println("\nMönch HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+            }
+        }
+        if (randomDrachenAngriff == drachenFaehigkeiten[1]) {
+            println("${drache1.name} setzt 'Flächenschaden' ein...")
+            if (magier.hp > 0) {
+                println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+                println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                if (magier.schutzschildGezogen) {
+                    println("Obwohl ${magier.name} aktiv ein Schutzschild ausgerüstet hat, konnte dieser die Bodenattacke nicht abwehren.")
+                    println("\nMagier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                    verursachterSchaden = drache1.flaechenSchaden.toDouble()
+                    Thread.sleep(1000)
+                    magier.hp = (magier.hp - verursachterSchaden)
+                    println("\nMagier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1}")
+                } else {
+                    println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                    verursachterSchaden = drache1.flaechenSchaden.toDouble()
+                    Thread.sleep(1000)
+                    magier.hp = (magier.hp - verursachterSchaden)
+                    println("\nMagier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1}")
+                }
+            }
+            if (ritter.hp > 0) {
+                println("${drache1.name} setzt 'Flächenschaden' ein...")
+                if (ritter.hp > 0) {
+                    println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                    if (ritter.schutzschildGezogen) {
+                        println("Obwohl ${ritter.name} aktiv ein Schutzschild ausgerüstet hat, konnte dieser die Bodenattacke nicht abwehren.")
+                        println("\nRitter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
+                        println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                        verursachterSchaden = drache1.flaechenSchaden.toDouble()
+                        Thread.sleep(1000)
+                        ritter.hp = (ritter.hp - verursachterSchaden)
+                        println("\nRitter HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    } else {
+                        println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                        println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                        verursachterSchaden = drache1.flaechenSchaden.toDouble()
+                        Thread.sleep(1000)
+                        ritter.hp = (ritter.hp - verursachterSchaden)
+                        println("\nRitter HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1}")
+                    }
+                }
+            }
+            if (moench.hp > 0) {
+                println("${drache1.name} setzt 'Flächenschaden' ein...")
+                if (moench.hp > 0) {
+                    println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                    if (moench.schwebenAktiv) {
+                        println("Dank ${moench.name}'s eingesetzter Schwebefähigkeit, konnte ${drache1.name} keinen Schaden erwirken.")
+                        println("\nMönch HP: ${moench.hp} (-0) vs. Drachen HP: ${dragonHP1}")
+                    } else {
+                        println("Mönch HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+                        println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
+                        verursachterSchaden = drache1.flaechenSchaden.toDouble()
+                        Thread.sleep(1000)
+                        moench.hp = (moench.hp - verursachterSchaden)
+                        println("\nMönch HP: ${moench.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1}")
+                    }
+                }
+            }
+        }
+    }
 
     // GegnerSchwierigkeitsStufe 2
     fun magierAngriffStufe2() {
@@ -616,6 +568,7 @@ fun main() {
             return magierAngriffStufe2()
         }
     }
+
     fun ritterAngriffStufe2() {
         println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP2}")
         println("Wähle eine Ritter-Fähigkeit")
@@ -630,7 +583,6 @@ fun main() {
                     ritter.schutzschildGezogen = true
                     println("${ritter.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
                     if (ritter.zustandSchutzSchild > 0) {
-                        ritter.zustandSchutzSchild--
                         if (ritter.schutzschildGezogen && ritter.schutzSchildNutzbarkeit) {
                             ritter.unverwundbar = true
                         }
@@ -665,6 +617,7 @@ fun main() {
             return ritterAngriffStufe2()
         }
     }
+
     fun moenchAngriffStufe2() {
         println("Mönch HP: ${ritter.hp} vs. Drachen HP: ${dragonHP2}")
         println("Wähle eine Mönch-Fähigkeit")
@@ -684,7 +637,7 @@ fun main() {
                             moench.schwebenAbklingdauer = 4
                         }
                     } else {
-                        println("${moench.name} hat seine Fähigkeit bereits vor ${4- moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
+                        println("${moench.name} hat seine Fähigkeit bereits vor ${4 - moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
                         println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache2.name} ${faehigkeitsSchadenMoench} Schaden.")
                         dragonHP2 = dragonHP2 - faehigkeitsSchadenMoench
                     }
@@ -693,7 +646,7 @@ fun main() {
                 "2" -> {
                     if (moench.selbstHeilungNutzbarkeit) {
                         moench.selbstHeilungNutzbarkeit = false
-                        var selbstHeilung = (moench.hp*0.05)+moench.hp
+                        var selbstHeilung = (moench.hp * 0.05) + moench.hp
                         println("${moench.name} setzt seine Selbstheilungskräfte ein und erhält +${selbstHeilung} HP.")
                         moench.hp = moench.hp + selbstHeilung
                     } else {
@@ -770,6 +723,7 @@ fun main() {
             return magierAngriffStufe3()
         }
     }
+
     fun ritterAngriffStufe3() {
         println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP3}")
         println("Wähle eine Ritter-Fähigkeit")
@@ -784,7 +738,6 @@ fun main() {
                     ritter.schutzschildGezogen = true
                     println("${ritter.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
                     if (ritter.zustandSchutzSchild > 0) {
-                        ritter.zustandSchutzSchild--
                         if (ritter.schutzschildGezogen && ritter.schutzSchildNutzbarkeit) {
                             ritter.unverwundbar = true
                         }
@@ -819,6 +772,7 @@ fun main() {
             return ritterAngriffStufe3()
         }
     }
+
     fun moenchAngriffStufe3() {
         println("Mönch HP: ${ritter.hp} vs. Drachen HP: ${dragonHP3}")
         println("Wähle eine Mönch-Fähigkeit")
@@ -838,7 +792,7 @@ fun main() {
                             moench.schwebenAbklingdauer = 4
                         }
                     } else {
-                        println("${moench.name} hat seine Fähigkeit bereits vor ${4- moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
+                        println("${moench.name} hat seine Fähigkeit bereits vor ${4 - moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
                         println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache3.name} ${faehigkeitsSchadenMoench} Schaden.")
                         dragonHP3 = dragonHP3 - faehigkeitsSchadenMoench
                     }
@@ -847,7 +801,7 @@ fun main() {
                 "2" -> {
                     if (moench.selbstHeilungNutzbarkeit) {
                         moench.selbstHeilungNutzbarkeit = false
-                        var selbstHeilung = (moench.hp*0.05)+moench.hp
+                        var selbstHeilung = (moench.hp * 0.05) + moench.hp
                         println("${moench.name} setzt seine Selbstheilungskräfte ein und erhält +${selbstHeilung} HP.")
                         moench.hp = moench.hp + selbstHeilung
                     } else {
@@ -868,4 +822,295 @@ fun main() {
             return moenchAngriffStufe3()
         }
     }
+
+
+    // Pausenmenü-Eingabe [1]
+    fun magier() {
+        println("\nHallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt}.\n")
+        Thread.sleep(1000)
+        println("\nName:                   ${magier.name}")
+        Thread.sleep(1000)
+        println("Helden-Art:             ${magier.heldenArt}")
+        Thread.sleep(1000)
+        println("HP:                     ${magier.hp}")
+        Thread.sleep(1000)
+        println("Gegenstände:            ${magier.beutel.size} im Beutel (Beutelinhalt: ${magier.beutel})")
+        Thread.sleep(1000)
+        println("Fähigkeiten:            ${magier.faehigkeiten}")
+        println()
+        println()
+    }
+
+    fun ritter() {
+        println("\nHallo, ich bin ${ritter.name} und ich bin ein ${ritter.heldenArt}.\n")
+        Thread.sleep(1000)
+        println("\nName:                   ${ritter.name}")
+        Thread.sleep(1000)
+        println("Helden-Art:             ${ritter.heldenArt}")
+        Thread.sleep(1000)
+        println("HP:                     ${ritter.hp}")
+        Thread.sleep(1000)
+        println("Gegenstände:            Schwert")
+        Thread.sleep(1000)
+        println("Fähigkeiten:            ${ritter.faehigkeiten}")
+        println()
+        println()
+    }
+
+    fun moench() {
+        println("\nHallo, ich bin ${moench.name} und ich bin ein ${moench.heldenArt}.\n")
+        Thread.sleep(1000)
+        println("\nName:                   ${moench.name}")
+        Thread.sleep(1000)
+        println("Helden-Art:             ${moench.heldenArt}")
+        Thread.sleep(1000)
+        println("HP:                     ${moench.hp}")
+        Thread.sleep(1000)
+        println("Gegenstände:            KEINE")
+        Thread.sleep(1000)
+        println("Fähigkeiten:            ${moench.faehigkeiten}")
+        println()
+        println()
+    }
+
+    // Pausenmenü-Eingabe [2]
+    fun drache() {
+        println("\nBevor ich dir deinen Gegner vorstellen kann, möchte ich wissen, wie stark er sein soll.")
+        Thread.sleep(1000)
+        println("\nWir haben 3 Schwierigkeitsstufen")
+        Thread.sleep(1000)
+        println("[1] leicht")
+        Thread.sleep(1000)
+        println("[2] normal")
+        Thread.sleep(1000)
+        println("[3] schwer")
+        Thread.sleep(1000)
+        println("\nBitte tippe nun die Schwierigkeitsstufe deiner Wahl ein:")
+
+        inputSchwierigkeitsstufeGegener = readln()
+
+        println("Gegner wird generiert")
+        Thread.sleep(1000)
+        println("...")
+        Thread.sleep(1000)
+        println("...")
+        Thread.sleep(1000)
+        println("...")
+        Thread.sleep(1000)
+        println("\nGegner wurde generiert!")
+
+        when (inputSchwierigkeitsstufeGegener) {
+            "1" -> {
+                Thread.sleep(1000)
+                println("Name:                   ${drache1.name}")
+                Thread.sleep(1000)
+                println("HP:                     ${dragonHP1}")
+                Thread.sleep(1000)
+                println("Fähigkeiten:")
+                Thread.sleep(1000)
+                println()
+                println("${drache1.faehigkeiten[0]} -> Klon: ${dragonKlonHP1} HP, ${dragonKlonSchaden1} Schaden")
+                Thread.sleep(1000)
+                println(drache1.faehigkeiten[1])
+                Thread.sleep(1000)
+                println(drache1.faehigkeiten[2])
+                Thread.sleep(1000)
+                println(drache1.faehigkeiten[3])
+                Thread.sleep(1000)
+                println(drache1.faehigkeiten[4])
+                Thread.sleep(1000)
+                println(drache1.faehigkeiten[5])
+                Thread.sleep(1000)
+                println()
+            }
+        }
+    }
+
+    fun einleitung() {
+        println("Unseren drei tapferen Helden")
+        Thread.sleep(1000)
+        println(magier.name)
+        Thread.sleep(1000)
+        println(ritter.name)
+        Thread.sleep(1000)
+        println("und ${moench.name}")
+        println("wandern gerade durch den nahe gelegenen Märchenwald, als sie auf einen Drachen treffen.")
+        Thread.sleep(1000)
+        println("Ohne mit der Wimper zu zucken, zieht unser Held ")
+        Thread.sleep(1000)
+        println("${ritter.heldenArt} ${ritter.name}")
+        println("sein Schwert und nähert sich dem Drachen für einen Überraschungsangriff. ")
+        Thread.sleep(1000)
+        println("Wie erwartet, ging")
+        Thread.sleep(1000)
+        println(ritter.name)
+        println("nicht leise genug vor und alarmierte somit den Drachen.")
+        Thread.sleep(1000)
+        println("Erst jetzt konnten unsere drei Helden die Größe ihres Gegners in vollem Umfang erfassen und stellten fest, dass es sich um ")
+        Thread.sleep(500)
+        println(drache1.name)
+        Thread.sleep(500)
+        println("handelt, den mächtigsten und stärksten Drachen im ganzen Land...")
+        Thread.sleep(5000)
+        println("Der Kampf beginnt in")
+        Thread.sleep(1000)
+        println("\n3")
+        Thread.sleep(1000)
+        println("\n2")
+        Thread.sleep(1000)
+        println("\n1")
+        Thread.sleep(1000)
+        println("\nGO!")
+
+        do {
+            if (inputSchwierigkeitsstufeGegener == "1") {
+
+                if (dragonHP1 > 0) {
+                    if (magier.hp > 0) {
+                        magierAngriffStufe1()
+                        println()
+                    } else {
+                        println("Magier: ${magier.hp} HP")
+                    }
+                    if (ritter.hp > 0) {
+                        ritterAngriffStufe1()
+                        println()
+                    } else {
+                        println("Ritter: ${ritter.hp} HP")
+                    }
+                    if (moench.hp > 0) {
+                        moenchAngriffStufe1()
+                        println()
+                    } else {
+                        println("Mönch: ${moench.hp} HP")
+                    }
+
+                    drachenAngriffStufe1()
+                    println()
+                } else {
+                    println("Drache: ${dragonHP1} HP")
+                    dragonLost()
+                }
+            } else if (inputSchwierigkeitsstufeGegener == "2") {
+                if (drache2.hp > 0) {
+                    if (magier.hp > 0) {
+                        magierAngriffStufe2()
+                        println()
+                    } else {
+                        println("Magier: ${magier.hp} HP")
+                    }
+                }
+                if (drache2.hp > 0) {
+                    if (ritter.hp > 0) {
+                        ritterAngriffStufe2()
+                        println()
+                    } else {
+                        println("Ritter: ${ritter.hp} HP")
+                    }
+                }
+                if (drache2.hp > 0) {
+                    if (moench.hp > 0) {
+                        moenchAngriffStufe2()
+                        println()
+                    } else {
+                        println("Mönch: ${moench.hp} HP")
+                    }
+                }
+                ////////////////////DRACHE GREIFT AN//////////////
+            } else {
+                if (drache3.hp > 0) {
+                    if (magier.hp > 0) {
+                        magierAngriffStufe3()
+                        println()
+                    } else {
+                        println("Magier: ${magier.hp} HP")
+                    }
+                }
+                if (drache3.hp > 0) {
+                    if (ritter.hp > 0) {
+                        ritterAngriffStufe3()
+                        println()
+                    } else {
+                        println("Ritter: ${ritter.hp} HP")
+                    }
+                }
+                if (drache3.hp > 0) {
+                    if (moench.hp > 0) {
+                        moenchAngriffStufe3()
+                        println()
+                    } else {
+                        println("Mönch: ${moench.hp} HP")
+                    }
+                }
+                ////////////////////DRACHE GREIFT AN//////////////
+            }
+            aktuelleRunde++
+        } while (aktuelleRunde <= maximaleRunden)
+    }
+
+    fun spielStarten() {
+        einleitung()
+    }
+
+    fun spielBeenden() {
+
+    }
+
+    fun pausenmenue() {
+        println("PAUSENMENÜ\n")
+        println("Was möchtest du tun?\n")
+        println(
+            """
+            [1] Helden kennenlernen
+            [2] Drache kennenlernen
+            [3] Spiel starten
+            [4] Spiel beenden
+        """.trimIndent()
+        )
+
+        var inputPausenmenue = readln()
+
+        when (inputPausenmenue) {
+            "1" -> {
+                magier()
+                Thread.sleep(5000)
+                ritter()
+                Thread.sleep(5000)
+                moench()
+            }
+
+            "2" -> {
+                drache()
+            }
+
+            "3" -> {
+                spielStarten()
+            }
+
+            "4" -> {
+                spielBeenden()
+            }
+        }
+        Thread.sleep(1000)
+        pausenmenue()
+    }
+
+    fun begruessung() {
+        println("Hallo und herzlich Willkommen zu meinem Videospiel!")
+        Thread.sleep(1000)
+        println("Im folgenden Spielverlauf wirst du deine drei Helden und deinen Gegner, einen mächtigen Drachen, kennenlernen.")
+        Thread.sleep(1000)
+        println("Fangen wir an...\n")
+        Thread.sleep(1000)
+
+        pausenmenue()
+    }
+
+    fun start() {
+        begruessung()
+    }
+
+    start()
+    //----------------------------------------------------------------------------------------------------------------------
+
 }

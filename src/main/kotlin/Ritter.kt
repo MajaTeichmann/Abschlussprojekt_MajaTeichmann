@@ -14,10 +14,11 @@ class Ritter(heldenArt: String, name: String, hp: Double, item: String) :
     var abklingzeitHarterSchlag = 0
 
 
-    var schutzSchildNutzbarkeit = true
-    var zustandSchutzSchild = 5
+
     var schutzschildGezogen = false
     var unverwundbar = false
+    var schutzSchildNutzbarkeit = true
+    var zustandSchutzSchild = 5
 
     override fun showFaehigkeiten() {
         println("${name}'s Fähigkeiten:")

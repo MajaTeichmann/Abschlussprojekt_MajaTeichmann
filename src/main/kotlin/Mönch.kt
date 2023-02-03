@@ -2,7 +2,6 @@ class Mönch(heldenArt: String, name: String, hp: Double) :
     Helden(heldenArt, name, hp) {
 
     var heldenHP: IntRange = 300..500
-    var mönchAngriff: String = ""
 
 
     override var faehigkeiten = mutableListOf<String>(
