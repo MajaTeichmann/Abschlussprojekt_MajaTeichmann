@@ -216,7 +216,7 @@ fun main() {
 
     //----------------------------------------------------------------------------------------------------------------------
 
-    fun dragonLost(){
+    fun dragonLost() {
         println("Der Drache ist tot und die Helden haben gewonnen!")
         println()
         println("\nDas Spiel ist vorbei!")
@@ -964,7 +964,6 @@ fun main() {
 
         do {
             if (inputSchwierigkeitsstufeGegener == "1") {
-
                 if (dragonHP1 > 0) {
                     if (magier.hp > 0) {
                         magierAngriffStufe1()
@@ -985,7 +984,7 @@ fun main() {
                         println("Mönch: ${moench.hp} HP")
                     }
 
-                    drachenAngriffStufe1()
+                   drachenAngriffStufe1()
                     println()
                 } else {
                     println("Drache: ${dragonHP1} HP")
