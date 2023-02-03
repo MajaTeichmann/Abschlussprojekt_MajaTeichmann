@@ -2,18 +2,22 @@ class Ritter(heldenArt: String, name: String, hp: Double, item: String) :
     Helden(heldenArt, name, hp) {
 
     var heldenHP: IntRange = 300..500
-    var ritterAngriff: String = ""
 
 
     override var faehigkeiten = mutableListOf<String>(
-        "ledo difficile (harter Schlag)",       // harter Schlag (macht x3 Schaden als üblich, alle 5 Runden einsetzbar)
-        "Schutzschild (Blockt Angriff)",        // Blockt Angriff ab (zerbricht, wenn Zustand <=0)
+        "Schutzschild (Blockt Angriff ab, zerbricht nach 5 geblockten Angriffen)",
+        "harter Schlag (macht x3 Schaden als üblich, alle 5 Runden einsetzbar)",
         "normaler Angriff"
     )
 
-    var harterSchlag = true
+    var harterSchlagVerfügbar = true
+    var abklingzeitHarterSchlag = 0
+
+
     var schutzSchildNutzbarkeit = true
     var zustandSchutzSchild = 5
+    var schutzschildGezogen = false
+    var unverwundbar = false
 
     override fun showFaehigkeiten() {
         println("${name}'s Fähigkeiten:")

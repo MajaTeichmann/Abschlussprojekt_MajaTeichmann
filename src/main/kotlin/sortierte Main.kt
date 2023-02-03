@@ -147,8 +147,8 @@ fun main() {
     val dragonFaehigkeitsSchaden: IntRange = 20..80
     val nameDrache = dragonNamen.random()
     var dragonHP1 = hpDragon1.random().toDouble()
-    val dragonHP2 = hpDragon2.random().toDouble()
-    val dragonHP3 = hpDragon3.random().toDouble()
+    var dragonHP2 = hpDragon2.random().toDouble()
+    var dragonHP3 = hpDragon3.random().toDouble()
 ////////////////////////////////////////////////
 
 //////////////////// KLON ////////////////////
@@ -411,55 +411,464 @@ fun main() {
     Thread.sleep(1000)
     println("\nGO!")
 
-    fun magierAngriff() {
+    // GegnerSchwierigkeitsStufe 1
+    fun magierAngriffStufe1() {
         println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
-        when (magierAngriff) {
-            magier.faehigkeiten[0] -> {
-                if (magier.abklingzeitSchutzSchild == 0) {
-                    magier.schutzschildGezogen = true
-                    println("${magier.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
-                    if (magier.schutzschildGezogen) {
-                        magier.schutzschildNutzbarkeit = false
-                        magier.schutzSchildMöglich = false
-                        magier.unverwundbar = true
-                        magier.abklingzeitSchutzSchild = 3
+        println("Wähle eine Magier-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${magier.faehigkeiten[0]}")
+        println("[2] ${magier.faehigkeiten[1]}")
+        println("[3] ${magier.faehigkeiten[2]}")
+        var magierFaehigkeitInput = readln()
+        if (magierFaehigkeitInput == "1" || magierFaehigkeitInput == "2" || magierFaehigkeitInput == "3") {
+            when (magierFaehigkeitInput) {
+                "1" -> {
+                    if (magier.abklingzeitSchutzSchild == 0) {
+                        magier.schutzschildGezogen = true
+                        println("${magier.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
+                        if (magier.schutzschildGezogen) {
+                            magier.schutzschildNutzbarkeit = false
+                            magier.schutzSchildMöglich = false
+                            magier.unverwundbar = true
+                            magier.abklingzeitSchutzSchild = 3
+                        }
+                    } else {
+                        println("${magier.name} wollte sein Schutzschild einsetzen. Dieser hat aber noch ${magier.abklingzeitSchutzSchild} Runde Abklingzeit.")
+                        println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
+                        dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
                     }
-                } else {
-                    println("${magier.name} wollte sein Schutzschild einsetzen. Dieser hat aber noch ${magier.abklingzeitSchutzSchild} Runde Abklingzeit.")
-                    println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
+                }
+
+                "2" -> {
+                    if (magier.abklingzeitDoppelterSchaden == 0) {
+                        magier.doppelterSchadenNutzbarkeit = false
+                        println("${magier.name} setzt seinen Schadenverdopplungszauber ein und schickt verursachten Schaden durch ${drache1.name} zurück und verdoppelt diesen.")
+                        if (!magier.doppelterSchadenNutzbarkeit) {
+                            magier.doppelterSchadenEingesetzt = true
+                            magier.abklingzeitDoppelterSchaden = 3
+                        }
+                    } else {
+                        println("${magier.name} wollte seinen Schadenverdopplungszauber einsetzen. Dieser hat aber noch ${magier.abklingzeitDoppelterSchaden} Runde Abklingzeit.")
+                        println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
+                        dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
+                    }
+                }
+
+                "3" -> {
+                    println("${magier.name} setzt seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
                     dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
                 }
             }
-
-            magier.faehigkeiten[1] -> {
-                if(magier.abklingzeitDoppelterSchaden == 0){
-                    magier.doppelterSchadenNutzbarkeit = false
-                    println("${magier.name} setzt seinen Schadenverdopplungszauber ein und schickt verursachten Schaden durch ${drache1.name} zurück und verdoppelt diesen.")
-                    if (!magier.doppelterSchadenNutzbarkeit) {
-                        magier.doppelterSchadenEingesetzt = true
-                        magier.abklingzeitDoppelterSchaden = 3
-                    }
-                }else{
-                    println("${magier.name} wollte seinen Schadenverdopplungszauber einsetzen. Dieser hat aber noch ${magier.abklingzeitDoppelterSchaden} Runde Abklingzeit.")
-                    println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
-                    dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
-                }
-            }
-
-            magier.faehigkeiten[2] -> {
-                println("${magier.name} setzt seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenMagier} Schaden.")
-                dragonHP1 = dragonHP1 - faehigkeitsSchadenMagier
-            }
+            println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+        } else {
+            println("Falsche Eingabe")
+            return magierAngriffStufe1()
         }
-        println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
     }
-    fun ritterAngriff(){
+    fun ritterAngriffStufe1() {
+        println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
+        println("Wähle eine Ritter-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${ritter.faehigkeiten[0]}")
+        println("[2] ${ritter.faehigkeiten[1]}")
+        println("[3] ${ritter.faehigkeiten[2]}")
+        var ritterFaehigkeitInput = readln()
+        if (ritterFaehigkeitInput == "1" || ritterFaehigkeitInput == "2" || ritterFaehigkeitInput == "3") {
+            when (ritterFaehigkeitInput) {
+                "1" -> {
+                    ritter.schutzschildGezogen = true
+                    println("${ritter.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
+                    if (ritter.zustandSchutzSchild > 0) {
+                        ritter.zustandSchutzSchild--
+                        if (ritter.schutzschildGezogen && ritter.schutzSchildNutzbarkeit) {
+                            ritter.unverwundbar = true
+                        }
+                    } else {
+                        println("${ritter.name}'s Schutzschild ist zerbrochen und kann nicht mehr genutzt werden!")
+                        println("Deshalb setzt ${ritter.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenRitter} Schaden.")
+                        dragonHP1 = dragonHP1 - faehigkeitsSchadenRitter
+                    }
+                }
 
+                "2" -> {
+                    if (ritter.abklingzeitHarterSchlag == 0 && ritter.harterSchlagVerfügbar) {
+                        ritter.abklingzeitHarterSchlag = 5
+                        ritter.harterSchlagVerfügbar = false
+                        println("${ritter.name} setzt seinen harten Schlag ein und macht ${drache1.name} ${faehigkeitsSchadenRitter * 3} Schaden.")
+                        dragonHP1 = dragonHP1 - (faehigkeitsSchadenRitter * 3)
+                    } else {
+                        println("${ritter.name} wollte seinen harten Schlag einsetzen. Dieser hat aber noch ${ritter.abklingzeitHarterSchlag} Runde Abklingzeit.")
+                        println("Deshalb setzt ${ritter.name} seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenRitter} Schaden.")
+                        dragonHP1 = dragonHP1 - faehigkeitsSchadenRitter
+                    }
+                }
+
+                "3" -> {
+                    println("${ritter.name} setzt seinen normalen Angriff ein und macht ${drache1.name} ${faehigkeitsSchadenRitter} Schaden.")
+                    dragonHP1 = dragonHP1 - faehigkeitsSchadenRitter
+                }
+            }
+            println("Ritter HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+        } else {
+            println("Falsche Eingabe")
+            return ritterAngriffStufe1()
+        }
     }
-    fun moenchAngriff(){
+    fun moenchAngriffStufe1() {
+        println("Mönch HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
+        println("Wähle eine Mönch-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${moench.faehigkeiten[0]}")
+        println("[2] ${moench.faehigkeiten[1]}")
+        println("[3] ${moench.faehigkeiten[2]}")
+        var moenchFaehigkeitInput = readln()
+        if (moenchFaehigkeitInput == "1" || moenchFaehigkeitInput == "2" || moenchFaehigkeitInput == "3") {
+            when (moenchFaehigkeitInput) {
+                "1" -> {
+                    moench.schwebenAktiv = true
+                    println("${moench.name} hat 'Schweben' aktiviert. Er ist nun 1 Runde vor Bodenattacken geschützt!")
+                    if (moench.schweben == false) {
+                        moench.schweben = true
+                        if (moench.schwebenAktiv && moench.schwebenAbklingdauer == 0) {
+                            moench.schwebenAbklingdauer = 4
+                        }
+                    } else {
+                        println("${moench.name} hat seine Fähigkeit bereits vor ${4- moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
+                        println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache1.name} ${faehigkeitsSchadenMoench} Schaden.")
+                        dragonHP1 = dragonHP1 - faehigkeitsSchadenMoench
+                    }
+                }
 
+                "2" -> {
+                    if (moench.selbstHeilungNutzbarkeit) {
+                        moench.selbstHeilungNutzbarkeit = false
+                        var selbstHeilung = (moench.hp*0.05)+moench.hp
+                        println("${moench.name} setzt seine Selbstheilungskräfte ein und erhält +${selbstHeilung} HP.")
+                        moench.hp = moench.hp + selbstHeilung
+                    } else {
+                        println("${moench.name} wollte sich selbst heilen. Diese Fähigkeit wurde aber bereits verwendet.")
+                        println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache1.name} ${faehigkeitsSchadenMoench} Schaden.")
+                        dragonHP1 = dragonHP1 - faehigkeitsSchadenMoench
+                    }
+                }
+
+                "3" -> {
+                    println("${moench.name} setzt seine Schockwelle ein und macht ${drache1.name} ${faehigkeitsSchadenMoench} Schaden.")
+                    dragonHP1 = dragonHP1 - faehigkeitsSchadenMoench
+                }
+            }
+            println("Mönch HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+        } else {
+            println("Falsche Eingabe")
+            return moenchAngriffStufe1()
+        }
     }
 
 
+    // GegnerSchwierigkeitsStufe 2
+    fun magierAngriffStufe2() {
+        println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP2}")
+        println("Wähle eine Magier-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${magier.faehigkeiten[0]}")
+        println("[2] ${magier.faehigkeiten[1]}")
+        println("[3] ${magier.faehigkeiten[2]}")
+        var magierFaehigkeitInput = readln()
+        if (magierFaehigkeitInput == "1" || magierFaehigkeitInput == "2" || magierFaehigkeitInput == "3") {
+            when (magierFaehigkeitInput) {
+                "1" -> {
+                    if (magier.abklingzeitSchutzSchild == 0) {
+                        magier.schutzschildGezogen = true
+                        println("${magier.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
+                        if (magier.schutzschildGezogen) {
+                            magier.schutzschildNutzbarkeit = false
+                            magier.schutzSchildMöglich = false
+                            magier.unverwundbar = true
+                            magier.abklingzeitSchutzSchild = 3
+                        }
+                    } else {
+                        println("${magier.name} wollte sein Schutzschild einsetzen. Dieser hat aber noch ${magier.abklingzeitSchutzSchild} Runde Abklingzeit.")
+                        println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache2.name} ${faehigkeitsSchadenMagier} Schaden.")
+                        dragonHP2 = dragonHP2 - faehigkeitsSchadenMagier
+                    }
+                }
 
+                "2" -> {
+                    if (magier.abklingzeitDoppelterSchaden == 0) {
+                        magier.doppelterSchadenNutzbarkeit = false
+                        println("${magier.name} setzt seinen Schadenverdopplungszauber ein und schickt verursachten Schaden durch ${drache2.name} zurück und verdoppelt diesen.")
+                        if (!magier.doppelterSchadenNutzbarkeit) {
+                            magier.doppelterSchadenEingesetzt = true
+                            magier.abklingzeitDoppelterSchaden = 3
+                        }
+                    } else {
+                        println("${magier.name} wollte seinen Schadenverdopplungszauber einsetzen. Dieser hat aber noch ${magier.abklingzeitDoppelterSchaden} Runde Abklingzeit.")
+                        println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache2.name} ${faehigkeitsSchadenMagier} Schaden.")
+                        dragonHP2 = dragonHP2 - faehigkeitsSchadenMagier
+                    }
+                }
+
+                "3" -> {
+                    println("${magier.name} setzt seinen normalen Angriff ein und macht ${drache2.name} ${faehigkeitsSchadenMagier} Schaden.")
+                    dragonHP2 = dragonHP2 - faehigkeitsSchadenMagier
+                }
+            }
+            println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP2}")
+        } else {
+            println("Falsche Eingabe")
+            return magierAngriffStufe2()
+        }
+    }
+    fun ritterAngriffStufe2() {
+        println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP2}")
+        println("Wähle eine Ritter-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${ritter.faehigkeiten[0]}")
+        println("[2] ${ritter.faehigkeiten[1]}")
+        println("[3] ${ritter.faehigkeiten[2]}")
+        var ritterFaehigkeitInput = readln()
+        if (ritterFaehigkeitInput == "1" || ritterFaehigkeitInput == "2" || ritterFaehigkeitInput == "3") {
+            when (ritterFaehigkeitInput) {
+                "1" -> {
+                    ritter.schutzschildGezogen = true
+                    println("${ritter.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
+                    if (ritter.zustandSchutzSchild > 0) {
+                        ritter.zustandSchutzSchild--
+                        if (ritter.schutzschildGezogen && ritter.schutzSchildNutzbarkeit) {
+                            ritter.unverwundbar = true
+                        }
+                    } else {
+                        println("${ritter.name}'s Schutzschild ist zerbrochen und kann nicht mehr genutzt werden!")
+                        println("Deshalb setzt ${ritter.name} seinen normalen Angriff ein und macht ${drache2.name} ${faehigkeitsSchadenRitter} Schaden.")
+                        dragonHP2 = dragonHP2 - faehigkeitsSchadenRitter
+                    }
+                }
+
+                "2" -> {
+                    if (ritter.abklingzeitHarterSchlag == 0 && ritter.harterSchlagVerfügbar) {
+                        ritter.abklingzeitHarterSchlag = 5
+                        ritter.harterSchlagVerfügbar = false
+                        println("${ritter.name} setzt seinen harten Schlag ein und macht ${drache2.name} ${faehigkeitsSchadenRitter * 3} Schaden.")
+                        dragonHP2 = dragonHP2 - (faehigkeitsSchadenRitter * 3)
+                    } else {
+                        println("${ritter.name} wollte seinen harten Schlag einsetzen. Dieser hat aber noch ${ritter.abklingzeitHarterSchlag} Runde Abklingzeit.")
+                        println("Deshalb setzt ${ritter.name} seinen normalen Angriff ein und macht ${drache2.name} ${faehigkeitsSchadenRitter} Schaden.")
+                        dragonHP2 = dragonHP2 - faehigkeitsSchadenRitter
+                    }
+                }
+
+                "3" -> {
+                    println("${ritter.name} setzt seinen normalen Angriff ein und macht ${drache2.name} ${faehigkeitsSchadenRitter} Schaden.")
+                    dragonHP2 = dragonHP2 - faehigkeitsSchadenRitter
+                }
+            }
+            println("Ritter HP: ${magier.hp} vs. Drachen HP: ${dragonHP2}")
+        } else {
+            println("Falsche Eingabe")
+            return ritterAngriffStufe2()
+        }
+    }
+    fun moenchAngriffStufe2() {
+        println("Mönch HP: ${ritter.hp} vs. Drachen HP: ${dragonHP2}")
+        println("Wähle eine Mönch-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${moench.faehigkeiten[0]}")
+        println("[2] ${moench.faehigkeiten[1]}")
+        println("[3] ${moench.faehigkeiten[2]}")
+        var moenchFaehigkeitInput = readln()
+        if (moenchFaehigkeitInput == "1" || moenchFaehigkeitInput == "2" || moenchFaehigkeitInput == "3") {
+            when (moenchFaehigkeitInput) {
+                "1" -> {
+                    moench.schwebenAktiv = true
+                    println("${moench.name} hat 'Schweben' aktiviert. Er ist nun 1 Runde vor Bodenattacken geschützt!")
+                    if (moench.schweben == false) {
+                        moench.schweben = true
+                        if (moench.schwebenAktiv && moench.schwebenAbklingdauer == 0) {
+                            moench.schwebenAbklingdauer = 4
+                        }
+                    } else {
+                        println("${moench.name} hat seine Fähigkeit bereits vor ${4- moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
+                        println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache2.name} ${faehigkeitsSchadenMoench} Schaden.")
+                        dragonHP2 = dragonHP2 - faehigkeitsSchadenMoench
+                    }
+                }
+
+                "2" -> {
+                    if (moench.selbstHeilungNutzbarkeit) {
+                        moench.selbstHeilungNutzbarkeit = false
+                        var selbstHeilung = (moench.hp*0.05)+moench.hp
+                        println("${moench.name} setzt seine Selbstheilungskräfte ein und erhält +${selbstHeilung} HP.")
+                        moench.hp = moench.hp + selbstHeilung
+                    } else {
+                        println("${moench.name} wollte sich selbst heilen. Diese Fähigkeit wurde aber bereits verwendet.")
+                        println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache2.name} ${faehigkeitsSchadenMoench} Schaden.")
+                        dragonHP2 = dragonHP2 - faehigkeitsSchadenMoench
+                    }
+                }
+
+                "3" -> {
+                    println("${moench.name} setzt seine Schockwelle ein und macht ${drache2.name} ${faehigkeitsSchadenMoench} Schaden.")
+                    dragonHP2 = dragonHP2 - faehigkeitsSchadenMoench
+                }
+            }
+            println("Mönch HP: ${magier.hp} vs. Drachen HP: ${dragonHP2}")
+        } else {
+            println("Falsche Eingabe")
+            return moenchAngriffStufe2()
+        }
+    }
+
+
+    // GegnerSchwierigkeitsStufe 3
+    fun magierAngriffStufe3() {
+        println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP3}")
+        println("Wähle eine Magier-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${magier.faehigkeiten[0]}")
+        println("[2] ${magier.faehigkeiten[1]}")
+        println("[3] ${magier.faehigkeiten[2]}")
+        var magierFaehigkeitInput = readln()
+        if (magierFaehigkeitInput == "1" || magierFaehigkeitInput == "2" || magierFaehigkeitInput == "3") {
+            when (magierFaehigkeitInput) {
+                "1" -> {
+                    if (magier.abklingzeitSchutzSchild == 0) {
+                        magier.schutzschildGezogen = true
+                        println("${magier.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
+                        if (magier.schutzschildGezogen) {
+                            magier.schutzschildNutzbarkeit = false
+                            magier.schutzSchildMöglich = false
+                            magier.unverwundbar = true
+                            magier.abklingzeitSchutzSchild = 3
+                        }
+                    } else {
+                        println("${magier.name} wollte sein Schutzschild einsetzen. Dieser hat aber noch ${magier.abklingzeitSchutzSchild} Runde Abklingzeit.")
+                        println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache3.name} ${faehigkeitsSchadenMagier} Schaden.")
+                        dragonHP3 = dragonHP3 - faehigkeitsSchadenMagier
+                    }
+                }
+
+                "2" -> {
+                    if (magier.abklingzeitDoppelterSchaden == 0) {
+                        magier.doppelterSchadenNutzbarkeit = false
+                        println("${magier.name} setzt seinen Schadenverdopplungszauber ein und schickt verursachten Schaden durch ${drache3.name} zurück und verdoppelt diesen.")
+                        if (!magier.doppelterSchadenNutzbarkeit) {
+                            magier.doppelterSchadenEingesetzt = true
+                            magier.abklingzeitDoppelterSchaden = 3
+                        }
+                    } else {
+                        println("${magier.name} wollte seinen Schadenverdopplungszauber einsetzen. Dieser hat aber noch ${magier.abklingzeitDoppelterSchaden} Runde Abklingzeit.")
+                        println("Deshalb setzt ${magier.name} seinen normalen Angriff ein und macht ${drache3.name} ${faehigkeitsSchadenMagier} Schaden.")
+                        dragonHP3 = dragonHP3 - faehigkeitsSchadenMagier
+                    }
+                }
+
+                "3" -> {
+                    println("${magier.name} setzt seinen normalen Angriff ein und macht ${drache3.name} ${faehigkeitsSchadenMagier} Schaden.")
+                    dragonHP3 = dragonHP3 - faehigkeitsSchadenMagier
+                }
+            }
+            println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP3}")
+        } else {
+            println("Falsche Eingabe")
+            return magierAngriffStufe3()
+        }
+    }
+    fun ritterAngriffStufe3() {
+        println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP3}")
+        println("Wähle eine Ritter-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${ritter.faehigkeiten[0]}")
+        println("[2] ${ritter.faehigkeiten[1]}")
+        println("[3] ${ritter.faehigkeiten[2]}")
+        var ritterFaehigkeitInput = readln()
+        if (ritterFaehigkeitInput == "1" || ritterFaehigkeitInput == "2" || ritterFaehigkeitInput == "3") {
+            when (ritterFaehigkeitInput) {
+                "1" -> {
+                    ritter.schutzschildGezogen = true
+                    println("${ritter.name} hat sein Schutzschild gezogen. Er ist nun 1 Runde unverwundbar!")
+                    if (ritter.zustandSchutzSchild > 0) {
+                        ritter.zustandSchutzSchild--
+                        if (ritter.schutzschildGezogen && ritter.schutzSchildNutzbarkeit) {
+                            ritter.unverwundbar = true
+                        }
+                    } else {
+                        println("${ritter.name}'s Schutzschild ist zerbrochen und kann nicht mehr genutzt werden!")
+                        println("Deshalb setzt ${ritter.name} seinen normalen Angriff ein und macht ${drache3.name} ${faehigkeitsSchadenRitter} Schaden.")
+                        dragonHP3 = dragonHP3 - faehigkeitsSchadenRitter
+                    }
+                }
+
+                "2" -> {
+                    if (ritter.abklingzeitHarterSchlag == 0 && ritter.harterSchlagVerfügbar) {
+                        ritter.abklingzeitHarterSchlag = 5
+                        ritter.harterSchlagVerfügbar = false
+                        println("${ritter.name} setzt seinen harten Schlag ein und macht ${drache3.name} ${faehigkeitsSchadenRitter * 3} Schaden.")
+                        dragonHP3 = dragonHP3 - (faehigkeitsSchadenRitter * 3)
+                    } else {
+                        println("${ritter.name} wollte seinen harten Schlag einsetzen. Dieser hat aber noch ${ritter.abklingzeitHarterSchlag} Runde Abklingzeit.")
+                        println("Deshalb setzt ${ritter.name} seinen normalen Angriff ein und macht ${drache3.name} ${faehigkeitsSchadenRitter} Schaden.")
+                        dragonHP3 = dragonHP3 - faehigkeitsSchadenRitter
+                    }
+                }
+
+                "3" -> {
+                    println("${ritter.name} setzt seinen normalen Angriff ein und macht ${drache3.name} ${faehigkeitsSchadenRitter} Schaden.")
+                    dragonHP3 = dragonHP3 - faehigkeitsSchadenRitter
+                }
+            }
+            println("Ritter HP: ${magier.hp} vs. Drachen HP: ${dragonHP3}")
+        } else {
+            println("Falsche Eingabe")
+            return ritterAngriffStufe3()
+        }
+    }
+    fun moenchAngriffStufe3() {
+        println("Mönch HP: ${ritter.hp} vs. Drachen HP: ${dragonHP3}")
+        println("Wähle eine Mönch-Fähigkeit")
+        Thread.sleep(800)
+        println("[1] ${moench.faehigkeiten[0]}")
+        println("[2] ${moench.faehigkeiten[1]}")
+        println("[3] ${moench.faehigkeiten[2]}")
+        var moenchFaehigkeitInput = readln()
+        if (moenchFaehigkeitInput == "1" || moenchFaehigkeitInput == "2" || moenchFaehigkeitInput == "3") {
+            when (moenchFaehigkeitInput) {
+                "1" -> {
+                    moench.schwebenAktiv = true
+                    println("${moench.name} hat 'Schweben' aktiviert. Er ist nun 1 Runde vor Bodenattacken geschützt!")
+                    if (moench.schweben == false) {
+                        moench.schweben = true
+                        if (moench.schwebenAktiv && moench.schwebenAbklingdauer == 0) {
+                            moench.schwebenAbklingdauer = 4
+                        }
+                    } else {
+                        println("${moench.name} hat seine Fähigkeit bereits vor ${4- moench.schwebenAbklingdauer} Runden aktiviert und kann aktuell nicht erneut genutzt werden!")
+                        println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache3.name} ${faehigkeitsSchadenMoench} Schaden.")
+                        dragonHP3 = dragonHP3 - faehigkeitsSchadenMoench
+                    }
+                }
+
+                "2" -> {
+                    if (moench.selbstHeilungNutzbarkeit) {
+                        moench.selbstHeilungNutzbarkeit = false
+                        var selbstHeilung = (moench.hp*0.05)+moench.hp
+                        println("${moench.name} setzt seine Selbstheilungskräfte ein und erhält +${selbstHeilung} HP.")
+                        moench.hp = moench.hp + selbstHeilung
+                    } else {
+                        println("${moench.name} wollte sich selbst heilen. Diese Fähigkeit wurde aber bereits verwendet.")
+                        println("Deshalb setzt ${moench.name} seine Schockwelle ein und macht ${drache3.name} ${faehigkeitsSchadenMoench} Schaden.")
+                        dragonHP3 = dragonHP3 - faehigkeitsSchadenMoench
+                    }
+                }
+
+                "3" -> {
+                    println("${moench.name} setzt seine Schockwelle ein und macht ${drache2.name} ${faehigkeitsSchadenMoench} Schaden.")
+                    dragonHP3 = dragonHP3 - faehigkeitsSchadenMoench
+                }
+            }
+            println("Mönch HP: ${magier.hp} vs. Drachen HP: ${dragonHP3}")
+        } else {
+            println("Falsche Eingabe")
+            return moenchAngriffStufe3()
+        }
+    }
 }

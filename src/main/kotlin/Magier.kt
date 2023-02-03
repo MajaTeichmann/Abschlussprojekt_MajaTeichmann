@@ -1,8 +1,6 @@
 class Magier(heldenArt: String, name: String, hp: Double, item: String) :
     Helden(heldenArt, name, hp) {
 
-    var magierAngriff: String = ""
-
 
     var schutzschildNutzbarkeit = true
     var schutzschildGezogen = false
@@ -17,9 +15,9 @@ class Magier(heldenArt: String, name: String, hp: Double, item: String) :
 
 
     override var faehigkeiten = mutableListOf<String>(
-        "expecto scutum (Schutzschild)",        // erwarte Schutzschild (schützt Zauberer 1 Runde vor Schaden) 1x alle 3 Runden nutzbar
-        "duplex damnum (doppelter Schaden)",    // verdopple Schaden (schickt verursachten Schaden durch Gegner  zurück und verdoppelt diesen, 3 Runden Abklingzeit)
-        "noceat (normaler Angriff)"             // werde schaden (normaler Angriff)
+        "Schutzschild (schützt Zauberer 1 Runde vor Schaden, 1x alle 3 Runden nutzbar)",
+        "doppelter Schaden (schickt verursachten Schaden durch Gegner  zurück und verdoppelt diesen, 3 Runden Abklingzeit)",
+        "normaler Angriff"
         )
 
     // Beutel mit Zaubertränken (eigene Anwendung und Fremdanwendung)

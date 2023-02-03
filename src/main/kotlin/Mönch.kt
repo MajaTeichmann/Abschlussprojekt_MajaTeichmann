@@ -11,7 +11,10 @@ class Mönch(heldenArt: String, name: String, hp: Double) :
         "Schockwelle"   // Schockwelle entsenden
     )
 
-    var selbstHeilungHutzbarkeit = true
+    var schwebenAktiv = false
+    var schweben = false
+    var schwebenAbklingdauer = 0
+    var selbstHeilungNutzbarkeit = true
 
     override fun showFaehigkeiten() {
         println("${name}'s Fähigkeiten:")
