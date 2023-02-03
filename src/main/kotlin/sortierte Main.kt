@@ -7,116 +7,15 @@ fun main() {
 
 ////////// VARIABLEN/KONSTANTEN -> HELDEN //////////
     val randomHeld = AussortierteVariablenUndKonstanten().heldenListe.random()
+    val randomHeldenName = AussortierteVariablenUndKonstanten().heldenNamen.random()
 
-    //AB HIER AUSSORTIEREN!!!!
-    val heldenNamen = mutableListOf<String>(
-        "Eltrocus",
-        "Kid",
-        "Bat",
-        "Dazzler",
-        "Crow",
-        "Spitfire",
-        "Watcher",
-        "Whiz",
-        "Oxman",
-        "Mole",
-        "Puma",
-        "Wolfman",
-        "Blitzfire",
-        "Deadnite",
-        "Whiz",
-        "General",
-        "Katana",
-        "Colossus",
-        "Shield",
-        "Spider",
-        "Prophet",
-        "Girl",
-        "Wolfman",
-        "Nighthawk",
-        "One",
-        "Wildflame",
-        "Hope",
-        "Kid",
-        "Wonder",
-        "Trident",
-        "Chronos",
-        "Y",
-        "Scout",
-        "Razor",
-        "Dagger",
-        "Manta",
-        "Griffin",
-        "Flare",
-        "Archer",
-        "Slayer",
-        "Soldier",
-        "Illusionist",
-        "Savior",
-        "Spy",
-        "Vindicator",
-        "Amazon",
-        "General",
-        "Leopard",
-        "Knuckles",
-        "Protector",
-        "Gamma",
-        "Mercenary",
-        "Karma",
-        "Grasshopper",
-        "Granite",
-        "Phantasm",
-        "Nightquake",
-        "Magician",
-        "Optimo",
-        "Prophet",
-        "Guardian",
-        "Spectre",
-        "Atomic",
-        "Axeman",
-        "Gargoyle",
-        "Starlight",
-        "Armadillo",
-        "Shield",
-        "Warrior",
-        "Siren",
-        "Saber",
-        "Marksman",
-        "Hammer",
-        "Elemental",
-        "Roach",
-        "Venombite",
-        "Commander",
-        "Commander",
-        "Katana",
-        "Watcher",
-        "Spitfire",
-        "Wonderman",
-        "Mole",
-        "Knight",
-        "Halo",
-        "Manta",
-        "Nightowl",
-        "Dragonloom",
-        "Beetle",
-        "Sentinel",
-        "Incognito",
-        "Crusher",
-        "Sage",
-        "Rosethorn",
-        "Oxman",
-        "Remix",
-        "Nighthawk",
-        "Spitfire",
-        "Gladiator",
-        "Flame"
-    )
-    val faehigkeitsSchaden: IntRange = 20..80
-    val heldenHP: IntRange = 300..500
-///////////////////////////////////////////////////
+
+/////////////////////////////////////
+/////////////AB HIER AUSSORTIEREN!!!!
+/////////////////////////////////////
 
 //////////////////// VARIABLEN/KONSTANTEN -> GEGNER ////////////////////
-    var verursachterSchaden = 0.0
+    var verursachterSchaden: Double
 //////////////////// DRACHE ////////////////////
     val dragonNamen = mutableListOf<String>(
         "Smaug",
@@ -174,22 +73,22 @@ fun main() {
 
     //////////////////// Objekte festlegen ////////////////////
 ////////// HELDEN //////////
-    val magier = Magier("Magier", heldenNamen.random(), heldenHP.random().toDouble(), "Beutel")
-    val ritter = Ritter("Ritter", heldenNamen.random(), heldenHP.random().toDouble(), "Schwert")
-    val moench = Mönch("Mönch", heldenNamen.random(), heldenHP.random().toDouble())
+    val magier = Magier("Magier", randomHeldenName, AussortierteVariablenUndKonstanten().heldenHP.random().toDouble(), "Beutel")
+    val ritter = Ritter("Ritter", randomHeldenName, AussortierteVariablenUndKonstanten().heldenHP.random().toDouble(), "Schwert")
+    val moench = Mönch("Mönch", randomHeldenName, AussortierteVariablenUndKonstanten().heldenHP.random().toDouble())
 
 //////////////////// MAGIER ////////////////////
-    val faehigkeitsSchadenMagier = faehigkeitsSchaden.random()
+    val faehigkeitsSchadenMagier = AussortierteVariablenUndKonstanten().faehigkeitsSchaden.random()
 ///////////////////////////////////////////////////
 
 
 //////////////////// RITTER ////////////////////
-    val faehigkeitsSchadenRitter = faehigkeitsSchaden.random()
+    val faehigkeitsSchadenRitter = AussortierteVariablenUndKonstanten().faehigkeitsSchaden.random()
 ///////////////////////////////////////////////////
 
 
 //////////////////// MÖNCH ////////////////////
-    val faehigkeitsSchadenMoench = faehigkeitsSchaden.random()
+    val faehigkeitsSchadenMoench = AussortierteVariablenUndKonstanten().faehigkeitsSchaden.random()
 ///////////////////////////////////////////////////
 
 ////////////////////////////
@@ -903,12 +802,12 @@ fun main() {
                 Thread.sleep(1000)
                 println("Name:                   ${drache1.name}")
                 Thread.sleep(1000)
-                println("HP:                     ${dragonHP1}")
+                println("HP:                     $dragonHP1")
                 Thread.sleep(1000)
                 println("Fähigkeiten:")
                 Thread.sleep(1000)
                 println()
-                println("${drache1.faehigkeiten[0]} -> Klon: ${dragonKlonHP1} HP, ${dragonKlonSchaden1} Schaden")
+                println("${drache1.faehigkeiten[0]} -> Klon: $dragonKlonHP1 HP, $dragonKlonSchaden1 Schaden")
                 Thread.sleep(1000)
                 println(drache1.faehigkeiten[1])
                 Thread.sleep(1000)
@@ -985,7 +884,7 @@ fun main() {
                     drachenAngriffStufe1()
                     println()
                 } else {
-                    println("Drache: ${dragonHP1} HP")
+                    println("Drache: $dragonHP1 HP")
                     dragonLost()
                 }
             } else if (inputSchwierigkeitsstufeGegener == "2") {

@@ -102,4 +102,9 @@ class AussortierteVariablenUndKonstanten() {
         "Gladiator",
         "Flame"
     )
+    open val faehigkeitsSchaden: IntRange = 20..80
+    open val heldenHP: IntRange = 300..500
+
+    // Gegner //
+
 }
