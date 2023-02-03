@@ -169,19 +169,16 @@ fun main() {
     val moench = Mönch("Mönch", heldenNamen.random(), heldenHP.random().toDouble())
 
 //////////////////// MAGIER ////////////////////
-    val magierAngriff = magier.faehigkeiten.random()
     val faehigkeitsSchadenMagier = faehigkeitsSchaden.random()
 ///////////////////////////////////////////////////
 
 
 //////////////////// RITTER ////////////////////
-    val ritterAngriff = ritter.faehigkeiten.random()
     val faehigkeitsSchadenRitter = faehigkeitsSchaden.random()
 ///////////////////////////////////////////////////
 
 
 //////////////////// MÖNCH ////////////////////
-    val moenchAngriff = moench.faehigkeiten.random()
     val faehigkeitsSchadenMoench = faehigkeitsSchaden.random()
 ///////////////////////////////////////////////////
 
@@ -334,6 +331,16 @@ fun main() {
         println(drache1.name)
         Thread.sleep(500)
         println("handelt, den mächtigsten und stärksten Drachen im ganzen Land...")
+        Thread.sleep(5000)
+        println("Der Kampf beginnt in")
+        Thread.sleep(1000)
+        println("\n3")
+        Thread.sleep(1000)
+        println("\n2")
+        Thread.sleep(1000)
+        println("\n1")
+        Thread.sleep(1000)
+        println("\nGO!")
     }
 
     fun spielStarten() {
@@ -400,16 +407,6 @@ fun main() {
 
     start()
 //----------------------------------------------------------------------------------------------------------------------
-
-    println("Der Kampf beginnt in")
-    Thread.sleep(1000)
-    println("\n3")
-    Thread.sleep(1000)
-    println("\n2")
-    Thread.sleep(1000)
-    println("\n1")
-    Thread.sleep(1000)
-    println("\nGO!")
 
     // GegnerSchwierigkeitsStufe 1
     fun magierAngriffStufe1() {
