@@ -983,8 +983,7 @@ fun main() {
                     } else {
                         println("Mönch: ${moench.hp} HP")
                     }
-
-                   drachenAngriffStufe1()
+                    drachenAngriffStufe1()
                     println()
                 } else {
                     println("Drache: ${dragonHP1} HP")
