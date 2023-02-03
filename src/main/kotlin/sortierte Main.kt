@@ -954,13 +954,13 @@ fun main() {
         Thread.sleep(5000)
         println("Der Kampf beginnt in")
         Thread.sleep(1000)
-        println("\n3")
+        println("3")
         Thread.sleep(1000)
-        println("\n2")
+        println("2")
         Thread.sleep(1000)
-        println("\n1")
+        println("1")
         Thread.sleep(1000)
-        println("\nGO!")
+        println("GO!")
 
         do {
             if (inputSchwierigkeitsstufeGegener == "1") {
