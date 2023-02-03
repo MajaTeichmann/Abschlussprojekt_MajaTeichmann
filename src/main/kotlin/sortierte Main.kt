@@ -5,7 +5,6 @@ fun main() {
     var inputSchwierigkeitsstufeGegener = ""
 /////////////////////////////////////////////
 
-
 ////////// VARIABLEN/KONSTANTEN -> HELDEN //////////
     val randomHeld = AussortierteVariablenUndKonstanten().heldenListe.random()
 
