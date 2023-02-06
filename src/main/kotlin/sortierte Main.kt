@@ -5,8 +5,6 @@ fun main() {
     val maximaleRunden = 5
     var inputSchwierigkeitsstufeGegener = "2"
     val randomHeld = Helden().heldenListe.random()
-    val randomHeldenName = Helden().heldenNamen.random()
-    val randomDragonName = Gegner().dragonNamen.random()
     var verursachterSchaden: Double
     val randomDrachenAngriff = Dragon().faehigkeiten.random()
     /////////////////////////
@@ -45,9 +43,9 @@ fun main() {
     val dragonKlonHP3 = dragonHP3 + (dragonHP3 * 0.3)
     val dragonKlonSchaden3: Double = dragonSchaden3 + (dragonSchaden3 * 0.2)
     var klon3 = DragonKlon()
-/////////////////////////////
-//----------------------------------------------------------------------------------------------------------------------
 
+    /////////////////////////////
+//----------------------------------------------------------------------------------------------------------------------
     fun dragonLost() {
         println("Der Drache ist tot und die Helden haben gewonnen!")
         println()
@@ -217,7 +215,7 @@ fun main() {
     fun drachenAngriffStufe1() {
         println("Drache ${drache1.name} wählt Angriff:")
         Thread.sleep(1000)
-        if (randomDrachenAngriff == Gegner().faehigkeiten[0]) {
+        if (randomDrachenAngriff == Dragon().faehigkeiten[0]) {
             println("${drache1.name}'s Klon erscheint...")
             if (magier.hp > 0) {
                 println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
@@ -290,7 +288,7 @@ fun main() {
                 heroesLost()
             }
         }
-        if (randomDrachenAngriff == Gegner().faehigkeiten[1]) {
+        if (randomDrachenAngriff == Dragon().faehigkeiten[1]) {
             println("${drache1.name} setzt 'Flächenschaden' ein...")
             if (magier.hp > 0) {
                 println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
@@ -357,7 +355,7 @@ fun main() {
                 heroesLost()
             }
         }
-        if (randomDrachenAngriff == Gegner().faehigkeiten[2]) {
+        if (randomDrachenAngriff == Dragon().faehigkeiten[2]) {
             println("${drache1.name} setzt 'Feueratem' ein...")
             if (magier.hp > 0) {
                 println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
@@ -431,7 +429,7 @@ fun main() {
                 }
             }
         }
-        if (randomDrachenAngriff == Gegner().faehigkeiten[3]) {
+        if (randomDrachenAngriff == Dragon().faehigkeiten[3]) {
             println("${drache1.name} hat seine HP-Klau Fähigkeit aktiviert und stielt einem zufälligen Helden 5% Gesamt-HP")
             Thread.sleep(1000)
             println("Drache wählt Held aus...")
@@ -452,8 +450,10 @@ fun main() {
         }
 
 ///////////////////// NOCH FÜLLEN /////////////////////
-        if (randomDrachenAngriff == Gegner().faehigkeiten[4]) {}
-        if (randomDrachenAngriff == Gegner().faehigkeiten[5]) {}
+        if (randomDrachenAngriff == Dragon().faehigkeiten[4]) {
+        }
+        if (randomDrachenAngriff == Dragon().faehigkeiten[5]) {
+        }
 ///////////////////////////////////////////////////////////////
     }
 
@@ -769,7 +769,7 @@ fun main() {
 
     // Pausenmenü-Eingabe [1]
     fun magierVorstellung() {
-        println("\nHallo, ich bin ${Magier().name} und ich bin ein ${magier.heldenArt}.\n")
+        println("\nHallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt}.\n")
         Thread.sleep(1000)
         println("\nName:                   ${magier.name}")
         Thread.sleep(1000)
@@ -1051,8 +1051,7 @@ fun main() {
     fun start() {
         begruessung()
     }
-
-    start()
 //----------------------------------------------------------------------------------------------------------------------
 
+    start()
 }
