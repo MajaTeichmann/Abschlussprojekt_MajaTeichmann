@@ -1,6 +1,10 @@
-class Magier(heldenArt: String, name: String, hp: Double, item: String) :
-    Helden(heldenArt, name, hp) {
+class Magier: Helden() {
 
+    var hp = heldenHP.random().toDouble()
+    val startHP = hp
+    var name = Helden().heldenNamen.random()
+    val schaden = Helden().faehigkeitsSchaden.random()
+    override var heldenArt = "Magier"
 
     var schutzschildNutzbarkeit = true
     var schutzschildGezogen = false
@@ -27,11 +31,6 @@ class Magier(heldenArt: String, name: String, hp: Double, item: String) :
         "Heilzauber", // heilt Anwender einmalig um 10% Gesamt-HP (mind. 5 HP)
         "Betaeubungszauber" // Betäubt Gegner 1 Runde und macht 2% Gesamtschaden)
     )
-
-    override fun showFaehigkeiten() {
-        println("${name}'s Fähigkeiten:")
-        println(faehigkeiten)
-    }
 
     fun showBeutel() {
         println("${name}'s Beutelitems:")

@@ -1,10 +1,29 @@
-open class Gegner(var name: String, var hp: Double, var schaden: Double) {
+open class Gegner {
 
-    var faehigkeiten = mutableListOf<String>(
-        "Klon heraufbeschwören",
-        "Flächenschaden",
-        "Feueratem",
-        "HP-Klau",
-        "Stampfattacke",
-        "Feuerregen")
+    open var verursachterSchadenDragon = 0.0
+    val dragonNamen = mutableListOf<String>(
+        "Smaug",
+        "Glaurung",
+        "Ancalagon",
+        "Drogon",
+        "Viserion",
+        "Rhaegal",
+        "King Ghidorah",
+        "Malefiz",
+        "Jabberwocky",
+        "Fuchur",
+        "Mushu",
+        "Elliot",
+        "Grisu",
+        "Tabaluga",
+        "Ohnezahn",
+        "Sturmpfeil",
+        "Draco",
+        "Saphira",
+        "Glaedr",
+        "Haku",
+        "Shenlong",
+        "Nepomuk"
+    )
+    open var faehigkeiten = mutableListOf<String>()
 }

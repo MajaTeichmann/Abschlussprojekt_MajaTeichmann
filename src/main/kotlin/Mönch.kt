@@ -1,7 +1,10 @@
-class Mönch(heldenArt: String, name: String, hp: Double) :
-    Helden(heldenArt, name, hp) {
+class Mönch() : Helden(){
 
-    var heldenHP: IntRange = 300..500
+    var hp = heldenHP.random().toDouble()
+    val startHP = hp
+    val name = Helden().heldenNamen.random()
+    val schaden = Helden().faehigkeitsSchaden.random()
+    override var heldenArt = "Mönch"
 
 
     override var faehigkeiten = mutableListOf<String>(
