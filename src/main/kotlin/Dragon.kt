@@ -1,5 +1,7 @@
 class Dragon : Gegner() {
 
+    var dra
+
     val flaechenSchadenRange = 150..300
     val flaechenSchaden = flaechenSchadenRange.random()
 
@@ -15,7 +17,8 @@ class Dragon : Gegner() {
         "Feueratem",
         "HP-Klau",
         "Stampfattacke",
-        "Feuerregen")
+        "Feuerregen"
+    )
 
     override var verursachterSchadenDragon: Double = 0.0
 
@@ -28,4 +31,15 @@ class Dragon : Gegner() {
     val faehigkeitsSchaden1: IntRange = 15..30
     val faehigkeitsSchaden2: IntRange = 35..70
     val faehigkeitsSchaden3: IntRange = 75..100
+
+    var feuerbaelle = 5
+    var gespuckteFeuerbaelle = 0
+    var feuerBaelleSpuckenRandomHeld = listOf<String>(
+        "daneben",
+        "Magier",
+        "daneben",
+        "Ritter",
+        "daneben",
+        "Mönch"
+    )
 }
