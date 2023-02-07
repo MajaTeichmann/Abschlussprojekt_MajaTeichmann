@@ -858,7 +858,6 @@ fun main() {
     }
     ///////////////////////////////////////////////////////////////
 
-
     // Pausenmenü-Eingabe [1]
     fun magierVorstellung() {
         println("\nHallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt}.\n")
