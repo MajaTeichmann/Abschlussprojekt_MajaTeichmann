@@ -698,7 +698,7 @@ fun main() {
         println("Noch nicht implementiert. Schwierigkeitsstufe wurde auf leicht (1) gesetzt.")
         inputSchwierigkeitsstufeGegener = "1"
     }
-    ///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
 
     // GegnerSchwierigkeitsStufe 3
     fun magierAngriffStufe3() {
@@ -863,7 +863,7 @@ fun main() {
         println("Noch nicht implementiert. Schwierigkeitsstufe wurde auf leicht (1) gesetzt.")
         inputSchwierigkeitsstufeGegener = "1"
     }
-    ///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
 
     // Pausenmenü-Eingabe [1]
     fun magierVorstellung() {
