@@ -40,12 +40,13 @@ fun main() {
     val dragonKlonHP3 = dragonHP3 + (dragonHP3 * 0.3)
     val dragonKlonSchaden3: Double = dragonSchaden3 + (dragonSchaden3 * 0.2)
     var klon3 = DragonKlon()
-//----------------------------------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------------------------------
     fun dragonLost() {
-    println("Der Drache ist tot und die Helden haben gewonnen!")
-    println()
-    println("\nDas Spiel ist vorbei!")
-}
+        println("Der Drache ist tot und die Helden haben gewonnen!")
+        println()
+        println("\nDas Spiel ist vorbei!")
+    }
 
     fun heroesLost() {
         println("Alle Helden sind tot und der Drache hat gewonnen!")
@@ -224,68 +225,74 @@ fun main() {
         println("Drache ${drache1.name} wählt Angriff:")
         Thread.sleep(1000)
         if (randomDrachenAngriff == Dragon().faehigkeiten[0]) {
-            println("${drache1.name}'s Klon erscheint...")
-            if (magier.hp > 0) {
-                println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
-                println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
-                println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
-                if (magier.schutzschildGezogen) {
-                    println("Die Angriffe vom Drachen und seinem Klon sind an ${magier.name}'s Schutzschild abgeprallt")
-                    magier.schutzschildGezogen = false
-                    magier.unverwundbar = false
-                    magier.abklingzeitSchutzSchild--
-                    if (magier.abklingzeitSchutzSchild == 0) {
-                        magier.schutzSchildMöglich = true
-                        magier.schutzschildNutzbarkeit = true
+            if (DragonKlon().einsetzbar == false) {
+                println("${drache1.name} wollte seinen Klon heraufbeschwören, dieser war aber schon im Einsatz.")
+                return drachenAngriffStufe1()
+            } else {
+                println("${drache1.name}'s Klon erscheint...")
+                DragonKlon().einsetzbar = false
+                if (magier.hp > 0) {
+                    println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                    println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                    if (magier.schutzschildGezogen) {
+                        println("Die Angriffe vom Drachen und seinem Klon sind an ${magier.name}'s Schutzschild abgeprallt")
+                        magier.schutzschildGezogen = false
+                        magier.unverwundbar = false
+                        magier.abklingzeitSchutzSchild--
+                        if (magier.abklingzeitSchutzSchild == 0) {
+                            magier.schutzSchildMöglich = true
+                            magier.schutzschildNutzbarkeit = true
+                        } else {
+                            magier.schutzSchildMöglich = false
+                            magier.schutzschildNutzbarkeit = false
+                        }
+                        println("\nMagier HP: ${magier.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                     } else {
-                        magier.schutzSchildMöglich = false
-                        magier.schutzschildNutzbarkeit = false
-                    }
-                    println("\nMagier HP: ${magier.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
-                } else {
-                    verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
-                    magier.hp = (magier.hp - verursachterSchaden)
-                    Thread.sleep(1000)
-                    println("\nMagier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                        verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
+                        magier.hp = (magier.hp - verursachterSchaden)
+                        Thread.sleep(1000)
+                        println("\nMagier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
 
-                }
-            }
-            if (ritter.hp > 0) {
-                println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
-                println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
-                println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
-                if (ritter.schutzschildGezogen) {
-                    println("Die Angriffe vom Drachen und seinem Klon sind an ${ritter.name}'s Schutzschild abgeprallt")
-                    ritter.schutzschildGezogen = true
-                    ritter.unverwundbar = true
-                    ritter.zustandSchutzSchild--
-                    if (ritter.zustandSchutzSchild == 0) {
-                        ritter.schutzSchildNutzbarkeit = false
-                        ritter.schutzschildGezogen = false
-                        ritter.unverwundbar = false
                     }
-                    println("\nRitter HP: ${ritter.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
-                } else {
+                }
+                if (ritter.hp > 0) {
+                    println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                    println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                    if (ritter.schutzschildGezogen) {
+                        println("Die Angriffe vom Drachen und seinem Klon sind an ${ritter.name}'s Schutzschild abgeprallt")
+                        ritter.schutzschildGezogen = true
+                        ritter.unverwundbar = true
+                        ritter.zustandSchutzSchild--
+                        if (ritter.zustandSchutzSchild == 0) {
+                            ritter.schutzSchildNutzbarkeit = false
+                            ritter.schutzschildGezogen = false
+                            ritter.unverwundbar = false
+                        }
+                        println("\nRitter HP: ${ritter.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    } else {
+                        verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
+                        ritter.hp = (ritter.hp - verursachterSchaden)
+                        Thread.sleep(1000)
+                        println("\nRitter HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    }
+                }
+                if (moench.hp > 0) {
+                    println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
+                    println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
+                    if (moench.schwebenAktiv) {
+                        moench.schwebenAbklingdauer--
+                    }
                     verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
-                    ritter.hp = (ritter.hp - verursachterSchaden)
                     Thread.sleep(1000)
-                    println("\nRitter HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    moench.hp = (moench.hp - verursachterSchaden)
+                    println("\nMönch HP: ${moench.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                 }
-            }
-            if (moench.hp > 0) {
-                println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
-                println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
-                println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
-                if (moench.schwebenAktiv) {
-                    moench.schwebenAbklingdauer--
+                if (magier.hp <= 0 && ritter.hp <= 0 && moench.hp <= 0) {
+                    heroesLost()
                 }
-                verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
-                Thread.sleep(1000)
-                moench.hp = (moench.hp - verursachterSchaden)
-                println("\nMönch HP: ${moench.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
-            }
-            if (magier.hp <= 0 && ritter.hp <= 0 && moench.hp <= 0) {
-                heroesLost()
             }
         }
         if (randomDrachenAngriff == Dragon().faehigkeiten[1]) {

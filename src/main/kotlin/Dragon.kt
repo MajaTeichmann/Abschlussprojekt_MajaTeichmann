@@ -1,7 +1,5 @@
 class Dragon : Gegner() {
 
-    var dra
-
     val flaechenSchadenRange = 150..300
     val flaechenSchaden = flaechenSchadenRange.random()
 
