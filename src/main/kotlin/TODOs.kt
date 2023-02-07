@@ -15,8 +15,8 @@ dragon.schaden = schaden
             ${dragon.faehigkeiten[0]} macht x1.5 Schaden, lebt 1 Runde
             ${dragon.faehigkeiten[1]} macht Bodenschaden
             ${dragon.faehigkeiten[2]} Feueratem -> ${schaden}
-            ${dragon.faehigkeiten[3]} zieht zufälligem Helden 5% HP ab (Held -5%, Drache +5% (vom HeldenHP)
-            ${dragon.faehigkeiten[4]} wie Flächenschaden + betäubt getroffene Helden
+            ${dragon.faehigkeiten[3]} zieht zufälligem Helden.Helden 5% HP ab (Held -5%, Drache +5% (vom HeldenHP)
+            ${dragon.faehigkeiten[4]} wie Flächenschaden + betäubt getroffene Helden.Helden
             ${dragon.faehigkeiten[5]} lässt 5 Feuerbälle vom Himmelregnen -> zufallsgenerator welche(r) Held(en) getroffen wird/werden"""
         )
     }
@@ -25,7 +25,7 @@ dragon.schaden = schaden
 //TODO: (3) funktionen, wenn drache verloren hat, erstellen
 /*
     fun dragonLost() {
-        println("Der Drache ${dragon.name} ist besiegt. Die Helden haben gewonnen!!!\n")
+        println("Der Drache ${dragon.name} ist besiegt. Die Helden.Helden haben gewonnen!!!\n")
 
         println("${magier.name}:    ${magier.hp}")
         println("${ritter.name}:    ${ritter.hp}")
@@ -37,7 +37,7 @@ dragon.schaden = schaden
 //TODO: (4) funktionen, wenn die helden verloren haben, erstellen
 /*
     fun heroesLost() {
-        println("Alle Helden wurden besiegt. Der Drache ${dragon.name} haben gewonnen!!!\n")
+        println("Alle Helden.Helden wurden besiegt. Der Drache ${dragon.name} haben gewonnen!!!\n")
 
         println("${magier.name}:    ${magier.hp}")
         println("${ritter.name}:    ${ritter.hp}")
@@ -68,14 +68,14 @@ dragon.schaden = schaden
  */
 
 //TODO: (6) funktionen, wenn 1 Held <=0 HP hat, erstellen
-// (7) funktionen, wenn 2 Helden <=0 HP haben, erstellen
+// (7) funktionen, wenn 2 Helden.Helden <=0 HP haben, erstellen
 /*
 
     fun alleHeldenGreifenAn() {
         if (magier.hp > 0) {
             println(
                 """
-                                Magier:          Dragon:
+                                Helden.Magier:          Gegner.Dragon:
                              ${magier.hp} vs. ${dragon.hp}""".trimIndent()
             )
             magierAngriff = magier.faehigkeiten.random()
@@ -113,7 +113,7 @@ dragon.schaden = schaden
         if (ritter.hp > 0) {
             println(
                 """
-                                Ritter:          Dragon:
+                                Helden.Ritter:          Gegner.Dragon:
                              ${ritter.hp} vs. ${dragon.hp}""".trimIndent()
             )
             var ritterAngriff = ritter.faehigkeiten.random()
@@ -145,7 +145,7 @@ dragon.schaden = schaden
         if (mönch.hp > 0) {
             println(
                 """
-                                Mönch:          Dragon:
+                                Helden.Mönch:          Gegner.Dragon:
                              ${ritter.hp} vs. ${dragon.hp}""".trimIndent()
             )
             var mönchAngriff = mönch.faehigkeiten.random()
@@ -181,9 +181,9 @@ dragon.schaden = schaden
             dragon.klon()
             println(
                 """
-                    Magier: ${magier.hp}                Drache: ${dragon.hp}
-                    Ritter: ${ritter.hp}        vs.
-                    Mönch: ${mönch.hp}                  Klon:   ${dragonKlon.hp}
+                    Helden.Magier: ${magier.hp}                Drache: ${dragon.hp}
+                    Helden.Ritter: ${ritter.hp}        vs.
+                    Helden.Mönch: ${mönch.hp}                  Klon:   ${dragonKlon.hp}
                 """.trimIndent()
             )
             println("Der Drache greift an!")
@@ -193,7 +193,7 @@ dragon.schaden = schaden
                     println("${dragon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragon.feuerAtemSchaden} an.")
                     println("${dragonKlon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragonKlon.schadenKlon} an.")
                     println("${magier.name} hat die Angriffe mit ${magier.faehigkeiten[0]} geblockt und erhält keinen Schaden.")
-                    println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
+                    println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
                 } else {
                     println("${magier.name} wollte seinen Schutzzauber einsetzen, aber dieser hat noch Abklingkeit.")
                     println("${magier.name}'s Zug ist beendet!")
@@ -203,7 +203,7 @@ dragon.schaden = schaden
                 println("${dragonKlon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragonKlon.schadenKlon} an.")
                 println("${magier.name} erhält einen Gesamtschaden von ${dragon.feuerAtemSchaden + dragonKlon.schadenKlon}.")
                 magier.hp = magier.hp - (dragon.feuerAtemSchaden + dragonKlon.schadenKlon)
-                println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
+                println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
             }
 
             if (ritterAngriff == ritter.faehigkeiten[1]) {
@@ -214,7 +214,7 @@ dragon.schaden = schaden
                         println("${dragon.name} greift ${ritter.name} mit einem Angriffsschaden von ${dragon.feuerAtemSchaden} an.")
                         println("${dragonKlon.name} greift ${ritter.name} mit einem Angriffsschaden von ${dragonKlon.schadenKlon} an.")
                         println("${ritter.name} hat die Angriffe mit ${ritter.faehigkeiten[1]} geblockt und erhält keinen Schaden.")
-                        println("Ritter: ${ritter.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
+                        println("Helden.Ritter: ${ritter.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
                     } else {
                         println("${ritter.name} wollte sein Schutzschild einsetzen, aber es hat noch Abklingkeit.")
                     }
@@ -226,7 +226,7 @@ dragon.schaden = schaden
                 println("${dragonKlon.name} greift ${ritter.name} mit einem Angriffsschaden von ${dragonKlon.schadenKlon} an.")
                 println("${ritter.name} erhält einen Gesamtschaden von ${dragon.feuerAtemSchaden + dragonKlon.schadenKlon}.")
                 ritter.hp = ritter.hp - (dragon.feuerAtemSchaden + dragonKlon.schadenKlon)
-                println("Ritter: ${ritter.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
+                println("Helden.Ritter: ${ritter.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
             }
             if (mönchAngriff == mönch.faehigkeiten[1]) {
                 if (mönch.selbstHeilungHutzbarkeit == true) {
@@ -234,7 +234,7 @@ dragon.schaden = schaden
                     println("${dragon.name} greift ${mönch.name} mit einem Angriffsschaden von ${dragon.feuerAtemSchaden} an.")
                     println("${dragonKlon.name} greift ${mönch.name} mit einem Angriffsschaden von ${dragonKlon.schadenKlon} an.")
                     println("${mönch.name} hat die Angriffe mit ${mönch.faehigkeiten[1]} geblockt und erhält keinen Schaden.")
-                    println("Ritter: ${mönch.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
+                    println("Helden.Ritter: ${mönch.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
                 } else {
                     println("${mönch.name} wollte seine Selbstheilungskräfte einsetzen, diese wurden aber schon verwendet.")
                 }
@@ -243,7 +243,7 @@ dragon.schaden = schaden
                 println("${dragonKlon.name} greift ${mönch.name} mit einem Angriffsschaden von ${dragonKlon.schadenKlon} an.")
                 println("${mönch.name} erhält einen Gesamtschaden von ${dragon.feuerAtemSchaden + dragonKlon.schadenKlon}.")
                 mönch.hp = mönch.hp - (dragon.feuerAtemSchaden + dragonKlon.schadenKlon)
-                println("Mönch: ${mönch.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
+                println("Helden.Mönch: ${mönch.hp}       vs.       Drache: ${dragon.hp} & Klon:   ${dragonKlon.hp}")
             }
         } else {
             when (dragonAngriff) {
@@ -251,20 +251,20 @@ dragon.schaden = schaden
                     dragon.flaechenSchaden()
                     println(
                         """
-                    Magier: ${magier.hp}
-                    Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
-                    Mönch: ${mönch.hp}
+                    Helden.Magier: ${magier.hp}
+                    Helden.Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
+                    Helden.Mönch: ${mönch.hp}
                 """.trimIndent()
                     )
                     println("Der Drache greift an!")
                     if (magierAngriff == magier.faehigkeiten[0]) {
                         println("${dragon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragon.flaechenSchaden} an.")
                         println("${magier.name} hat die Angriffe mit ${magier.faehigkeiten[0]} geblockt und erhält keinen Schaden.")
-                        println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
+                        println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
                     } else {
                         println("${dragon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragon.flaechenSchaden} an.")
                         magier.hp = magier.hp - (dragon.flaechenSchaden)
-                        println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
+                        println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
                     }
                 }
 
@@ -272,29 +272,29 @@ dragon.schaden = schaden
                     dragon.feueratem()
                     println(
                         """
-                    Magier: ${magier.hp}
-                    Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
-                    Mönch: ${mönch.hp}
+                    Helden.Magier: ${magier.hp}
+                    Helden.Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
+                    Helden.Mönch: ${mönch.hp}
                 """.trimIndent()
                     )
                     println("Der Drache greift an!")
                     if (magierAngriff == magier.faehigkeiten[0]) {
                         println("${dragon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragon.feuerAtemSchaden} an.")
                         println("${magier.name} hat die Angriffe mit ${magier.faehigkeiten[0]} geblockt und erhält keinen Schaden.")
-                        println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
+                        println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
                     } else {
                         println("${dragon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragon.feuerAtemSchaden} an.")
                         magier.hp = magier.hp - (dragon.feuerAtemSchaden)
-                        println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
+                        println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
                     }
                 }
 
                 dragon.faehigkeiten[3] -> {
                     dragon.hpKlau()
                     println("${randomHero} überträgt 5% seiner Gesamt-HP an ${dragon.name}")
-                    if (randomHero == "Magier") {
+                    if (randomHero == "Helden.Magier") {
                         magier.hp = magier.hp - (magier.hp * 0.05)
-                    } else if (randomHero == "Ritter") {
+                    } else if (randomHero == "Helden.Ritter") {
                         ritter.hp = ritter.hp - (ritter.hp * 0.05)
                     } else {
                         mönch.hp = mönch.hp - (mönch.hp * 0.05)
@@ -303,32 +303,32 @@ dragon.schaden = schaden
 
                     println(
                         """
-                    Magier: ${magier.hp}
-                    Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
-                    Mönch: ${mönch.hp}
+                    Helden.Magier: ${magier.hp}
+                    Helden.Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
+                    Helden.Mönch: ${mönch.hp}
                 """.trimIndent()
                     )
                     println("Der Drache greift an!")
                     if (magierAngriff == magier.faehigkeiten[0]) {
                         println("${dragon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragon.flaechenSchaden} an.")
                         println("${magier.name} hat die Angriffe mit ${magier.faehigkeiten[0]} geblockt und erhält keinen Schaden.")
-                        println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
+                        println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
                     } else {
                         println("${dragon.name} greift ${magier.name} mit einem Angriffsschaden von ${dragon.flaechenSchaden} an.")
                         magier.hp = magier.hp - (dragon.flaechenSchaden)
-                        println("Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
+                        println("Helden.Magier: ${magier.hp}       vs.       Drache: ${dragon.hp}")
                     }
                 }
 
                 dragon.faehigkeiten[4] -> {
                     dragon.stampfAttacke()
-                    // Alle Helden (am boden) betäuben (nächste Runde können sie nicht angreifen)
+                    // Alle Helden.Helden (am boden) betäuben (nächste Runde können sie nicht angreifen)
                     // stampattacke abklingzeit einrichten (alle 5 runden möglich)
                     println(
                         """
-                    Magier: ${magier.hp}
-                    Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
-                    Mönch: ${mönch.hp}
+                    Helden.Magier: ${magier.hp}
+                    Helden.Ritter: ${ritter.hp}        vs.     Drache: ${dragon.hp}
+                    Helden.Mönch: ${mönch.hp}
                 """.trimIndent()
  */
 //-------------------------------------------------------------------
