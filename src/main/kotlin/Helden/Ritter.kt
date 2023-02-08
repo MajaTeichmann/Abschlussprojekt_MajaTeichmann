@@ -12,7 +12,7 @@ class Ritter : Helden() {
 
 
     override var faehigkeiten = mutableListOf<String>(
-        "Schutzschild (blockt Angriff, Haltbarkeit 5 Angriffe)",
+        "Schutzschild (blockt Angriff, 1 Runde Schutz, 1x alle 2 Runden nutzbar, max. Haltbarkeit 5 Angriffe)",
         "harter Schlag (Schaden x3, 1x alle 5 Runden nutzbar)",
         "normaler Angriff"
     )

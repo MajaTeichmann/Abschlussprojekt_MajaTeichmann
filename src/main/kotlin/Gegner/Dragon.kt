@@ -41,8 +41,8 @@ class Dragon : Gegner() {
         "daneben",
         "Magier",
         "daneben",
-        "Helden.Ritter",
+        "Ritter",
         "daneben",
-        "Helden.Mönch"
+        "Mönch"
     )
 }

@@ -43,7 +43,7 @@ class funktionen {
     var klon3 = DragonKlon()
 
     var aktuelleRunde = 1
-    val maximaleRunden = 15
+    val maximaleRunden = 7
     var magierFaehigkeitInput: String = ""
     var inputSchwierigkeitsstufeGegener = "1"
     val randomHeld = Helden().heldenListe.random()
@@ -80,6 +80,7 @@ class funktionen {
     fun start() {
         begruessung()
     }
+
     fun begruessung() {
         println("Hallo und herzlich Willkommen zu meinem Videospiel!")
         Thread.sleep(1000)
@@ -90,6 +91,7 @@ class funktionen {
 
         pausenmenue()
     }
+
     fun pausenmenue() {
         println("PAUSENMENÜ\n")
         println("Was möchtest du tun?\n")
@@ -119,9 +121,11 @@ class funktionen {
         Thread.sleep(1000)
         pausenmenue()
     }
+
     fun spielStarten() {
         einleitung()
     }
+
     fun einleitung() {
         println("Unseren drei tapferen Helden ${magier.name}, ${ritter.name} und ${moench.name}")
         println("wandern gerade durch den nahe gelegenen Märchenwald, als sie auf einen Drachen treffen.")
@@ -146,6 +150,7 @@ class funktionen {
 
         kampfBeginnt()
     }
+
     fun kampfBeginnt() {
         do {
             println("\nRunde ${aktuelleRunde}:\n")
@@ -168,7 +173,6 @@ class funktionen {
                         }
                     } else {
                         println("${magier.name} ist aktuell betäubt und kann nicht angreifen")
-                        magier.betaeubt = false
                     }
                     if (!ritter.betaeubt) {
                         if (dragonHP1 > 0 && ritter.hp > 0) {
@@ -187,7 +191,6 @@ class funktionen {
                         }
                     } else {
                         println("${ritter.name} ist aktuell betäubt und kann nicht angreifen")
-                        ritter.betaeubt = false
                     }
                     if (!moench.betaeubt) {
                         if (dragonHP1 > 0 && moench.hp > 0) {
@@ -206,7 +209,6 @@ class funktionen {
                         }
                     } else {
                         println("${moench.name} ist aktuell betäubt und kann nicht angreifen")
-                        moench.betaeubt = false
                     }
                     if (dragonHP1 > 0) {
                         drachenAngriffStufe1()
@@ -238,7 +240,6 @@ class funktionen {
                         }
                     } else {
                         println("${magier.name} ist aktuell betäubt und kann nicht angreifen")
-                        magier.betaeubt = false
                     }
                     if (!ritter.betaeubt) {
                         if (dragonHP2 > 0 && ritter.hp > 0) {
@@ -256,8 +257,7 @@ class funktionen {
                             }
                         }
                     } else {
-                        println("${magier.name} ist aktuell betäubt und kann nicht angreifen")
-                        magier.betaeubt = false
+                        println("${ritter.name} ist aktuell betäubt und kann nicht angreifen")
                     }
                     if (!moench.betaeubt) {
                         if (dragonHP2 > 0 && moench.hp > 0) {
@@ -275,8 +275,7 @@ class funktionen {
                             }
                         }
                     } else {
-                        println("${magier.name} ist aktuell betäubt und kann nicht angreifen")
-                        magier.betaeubt = false
+                        println("${moench.name} ist aktuell betäubt und kann nicht angreifen")
                     }
                     if (dragonHP2 > 0) {
                         drachenAngriffStufe2()
@@ -309,7 +308,6 @@ class funktionen {
                         }
                     } else {
                         println("${magier.name} ist aktuell betäubt und kann nicht angreifen")
-                        magier.betaeubt = false
                     }
                     if (!ritter.betaeubt) {
                         if (dragonHP3 > 0 && ritter.hp > 0) {
@@ -327,8 +325,7 @@ class funktionen {
                             }
                         }
                     } else {
-                        println("${magier.name} ist aktuell betäubt und kann nicht angreifen")
-                        magier.betaeubt = false
+                        println("${ritter.name} ist aktuell betäubt und kann nicht angreifen")
                     }
                     if (!moench.betaeubt) {
                         if (dragonHP3 > 0 && moench.hp > 0) {
@@ -346,8 +343,7 @@ class funktionen {
                             }
                         }
                     } else {
-                        println("${magier.name} ist aktuell betäubt und kann nicht angreifen")
-                        magier.betaeubt = false
+                        println("${moench.name} ist aktuell betäubt und kann nicht angreifen")
                     }
                     if (dragonHP3 > 0) {
                         drachenAngriffStufe3()
@@ -401,16 +397,16 @@ class funktionen {
             }
         }
         if (inputSchwierigkeitsstufeGegener == "3") {
-                heldenGesamtHP = magier.hp + ritter.hp + moench.hp
-                if (heldenGesamtHP > dragonHP1) {
-                    dragonLostStufe3()
-                }
-                if (heldenGesamtHP < dragonHP1) {
-                    heroesLostStufe3()
-                }
-                if (heldenGesamtHP == dragonHP1) {
-                    println("Unentschieden!")
-                }
+            heldenGesamtHP = magier.hp + ritter.hp + moench.hp
+            if (heldenGesamtHP > dragonHP1) {
+                dragonLostStufe3()
+            }
+            if (heldenGesamtHP < dragonHP1) {
+                heroesLostStufe3()
+            }
+            if (heldenGesamtHP == dragonHP1) {
+                println("Unentschieden!")
+            }
 
         }
     }
@@ -425,12 +421,11 @@ class funktionen {
         Thread.sleep(1000)
         println("HP:                     ${magier.hp}")
         Thread.sleep(1000)
-        println("Gegenstände:            ${magier.beutel.size} Gegenstände im Beutel (Beutelinhalt: ${magier.beutel})")
-        Thread.sleep(1000)
         println("Fähigkeiten:            ${magier.faehigkeiten}")
         println()
         println()
     }
+
     fun ritterVorstellung() {
         println("\nHallo, ich bin ${ritter.name} und ich bin ein ${ritter.heldenArt}.\n")
         Thread.sleep(1000)
@@ -446,6 +441,7 @@ class funktionen {
         println()
         println()
     }
+
     fun moenchVorstellung() {
         println("\nHallo, ich bin ${moench.name} und ich bin ein ${moench.heldenArt}.\n")
         Thread.sleep(1000)
@@ -620,6 +616,7 @@ class funktionen {
             return magierAngriffStufe1()
         }
     }
+
     fun ritterAngriffStufe1() {
         println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
         println("Wähle eine Ritter-Fähigkeit")
@@ -678,6 +675,7 @@ class funktionen {
             return ritterAngriffStufe1()
         }
     }
+
     fun moenchAngriffStufe1() {
         println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1}")
         println("Wähle eine Mönch-Fähigkeit")
@@ -732,6 +730,7 @@ class funktionen {
             return moenchAngriffStufe1()
         }
     }
+
     fun drachenAngriffStufe1() {
         println("Drache ${drache1.name} wählt Angriff:")
         var randomDrachenAngriff = drache1.faehigkeiten.random()
@@ -830,6 +829,7 @@ class funktionen {
                     println("Weil ${magier.name} seine 'doppelter Schaden' Fähigkeit eingesetzt hat, würde der Drache seinen eingesetzten Schaden verdoppelt zurück erhalten.")
                     println("Dieser wirkt bei dieser Drachenfähigkeit aber nicht. ${drache1.name} macht deshalb ${magier.name} ${drache1.flaechenSchaden} Schaden.")
                     verursachterSchaden = drache1.flaechenSchaden.toDouble()
+                    magier.hp = magier.hp - verursachterSchaden
                     println("Magier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1}\n")
 
                 } else {
@@ -859,6 +859,7 @@ class funktionen {
                 if (moench.schwebenAktiv) {
                     println("Dank ${moench.name}'s eingesetzter Schwebefähigkeit, konnte ${drache1.name} keinen Schaden erwirken.")
                     println("Mönch HP: ${moench.hp} (-0) vs. Drachen HP: ${dragonHP1}\n")
+                    moench.schwebenAktiv = false
                 } else {
                     verursachterSchaden = drache1.flaechenSchaden.toDouble()
                     Thread.sleep(1000)
@@ -1077,6 +1078,15 @@ class funktionen {
                 drache1.gespuckteFeuerbaelle++
             } while (drache1.gespuckteFeuerbaelle <= drache1.feuerbaelle)
         }
+        if (magier.betaeubt == true){
+            magier.betaeubt = false
+        }
+        if (ritter.betaeubt == true){
+            ritter.betaeubt = false
+        }
+        if (moench.betaeubt == true){
+            moench.betaeubt = false
+        }
     }
 
     // GegnerSchwierigkeitsStufe 2
@@ -1135,6 +1145,7 @@ class funktionen {
             return magierAngriffStufe2()
         }
     }
+
     fun ritterAngriffStufe2() {
         println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP2}")
         println("Wähle eine Ritter-Fähigkeit")
@@ -1193,6 +1204,7 @@ class funktionen {
             return ritterAngriffStufe2()
         }
     }
+
     fun moenchAngriffStufe2() {
         println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP2}")
         println("Wähle eine Mönch-Fähigkeit")
@@ -1247,6 +1259,7 @@ class funktionen {
             return moenchAngriffStufe2()
         }
     }
+
     fun drachenAngriffStufe2() {
         println("Drache ${drache2.name} wählt Angriff:")
         var randomDrachenAngriff = drache2.faehigkeiten.random()
@@ -1650,6 +1663,7 @@ class funktionen {
             return magierAngriffStufe2()
         }
     }
+
     fun ritterAngriffStufe3() {
         println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP3}")
         println("Wähle eine Ritter-Fähigkeit")
@@ -1708,6 +1722,7 @@ class funktionen {
             return ritterAngriffStufe2()
         }
     }
+
     fun moenchAngriffStufe3() {
         println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP3}")
         println("Wähle eine Mönch-Fähigkeit")
@@ -1762,6 +1777,7 @@ class funktionen {
             return moenchAngriffStufe2()
         }
     }
+
     fun drachenAngriffStufe3() {
         println("Drache ${drache3.name} wählt Angriff:")
         var randomDrachenAngriff = drache3.faehigkeiten.random()
@@ -2115,12 +2131,14 @@ class funktionen {
         println()
         println("\nDas Spiel ist vorbei!")
     }
+
     fun dragonLostStufe2() {
         println("Die Helden haben gewonnen!")
         println("${heldenGesamtHP} vs. ${dragonHP2}")
         println()
         println("\nDas Spiel ist vorbei!")
     }
+
     fun dragonLostStufe3() {
         println("Die Helden haben gewonnen!")
         println("${heldenGesamtHP} vs. ${dragonHP3}")
@@ -2138,6 +2156,7 @@ class funktionen {
         println()
         println("\nDas Spiel ist vorbei!")
     }
+
     fun heroesLostStufe2() {
         println("Der Drache hat gewonnen!")
         println("${magier.hp} vs. ${dragonHP2}")
@@ -2148,6 +2167,7 @@ class funktionen {
         println()
         println("\nDas Spiel ist vorbei!")
     }
+
     fun heroesLostStufe3() {
         println("Der Drache hat gewonnen!")
         println("${magier.hp} vs. ${dragonHP3}")
