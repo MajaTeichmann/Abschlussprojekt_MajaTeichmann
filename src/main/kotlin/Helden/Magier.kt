@@ -8,7 +8,7 @@ class Magier: Helden() {
     var betaeubt = false
     var name = Helden().heldenNamen.random()
     val schaden = Helden().faehigkeitsSchaden.random()
-    override var heldenArt = "Helden.Magier"
+    override var heldenArt = "Magier"
 
     var schutzschildNutzbarkeit = true
     var schutzschildGezogen = false
@@ -23,8 +23,8 @@ class Magier: Helden() {
 
 
     override var faehigkeiten = mutableListOf<String>(
-        "Schutzschild (schützt Zauberer 1 Runde vor Schaden, 1x alle 3 Runden nutzbar)",
-        "doppelter Schaden (schickt verursachten Schaden durch Gegner.Gegner  zurück und verdoppelt diesen, 3 Runden Abklingzeit)",
+        "Schutzschild (1 Runde Schutz, 1x alle 3 Runden nutzbar)",
+        "doppelter Schaden (schickt verursachten Schaden durch Gegner x2 zurück, 1x alle 3 Runden nutzbar)",
         "normaler Angriff"
         )
 

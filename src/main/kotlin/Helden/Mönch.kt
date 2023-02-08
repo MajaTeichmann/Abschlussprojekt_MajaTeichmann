@@ -8,12 +8,12 @@ class Mönch : Helden(){
     var betaeubt = false
     val name = Helden().heldenNamen.random()
     val schaden = Helden().faehigkeitsSchaden.random()
-    override var heldenArt = "Helden.Mönch"
+    override var heldenArt = "Mönch"
 
 
     override var faehigkeiten = mutableListOf<String>(
-        "Schweben",     // weicht Bodenattacken aus (1x alle 4 Runden möglich)
-        "Meditation",   // Selbstheilung durch Meditation um 5% -> 1x möglich
+        "Schweben (immun gegen Bodenattacken, 1x alle 4 Runden nutzbar)",     // weicht Bodenattacken aus (1x alle 4 Runden möglich)
+        "Meditation (heilt um 5% Gesamt-HP, 1x möglich)",   // Selbstheilung durch Meditation um 5% -> 1x möglich
         "Schockwelle"   // Schockwelle entsenden
     )
 

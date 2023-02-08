@@ -25,8 +25,11 @@ class Dragon : Gegner() {
     val name = Gegner().dragonNamen.random()
 
     val hpDragon1: IntRange = 450..650
+    var dragonHP1 = hpDragon1.random().toDouble()
     val hpDragon2: IntRange = 660..850
+    var dragonHP2 = hpDragon2.random().toDouble()
     val hpDragon3: IntRange = 860..1100
+    var dragonHP3 = hpDragon3.random().toDouble()
 
     val faehigkeitsSchaden1: IntRange = 15..30
     val faehigkeitsSchaden2: IntRange = 35..70
