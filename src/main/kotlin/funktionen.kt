@@ -43,7 +43,7 @@ class funktionen {
     var klon3 = DragonKlon()
 
     var aktuelleRunde = 1
-    val maximaleRunden = 5
+    val maximaleRunden = 15
     var magierFaehigkeitInput: String = ""
     var inputSchwierigkeitsstufeGegener = "1"
     val randomHeld = Helden().heldenListe.random()
@@ -401,11 +401,6 @@ class funktionen {
             }
         }
         if (inputSchwierigkeitsstufeGegener == "3") {
-            if (dragonHP1 > magier.hp && dragonHP1 > ritter.hp && dragonHP1 > moench.hp) {
-                heroesLostStufe3()
-            } else if (dragonHP1 < magier.hp && dragonHP1 < ritter.hp && dragonHP1 < moench.hp) {
-                dragonLostStufe1()
-            } else {
                 heldenGesamtHP = magier.hp + ritter.hp + moench.hp
                 if (heldenGesamtHP > dragonHP1) {
                     dragonLostStufe3()
@@ -416,7 +411,7 @@ class funktionen {
                 if (heldenGesamtHP == dragonHP1) {
                     println("Unentschieden!")
                 }
-            }
+
         }
     }
 
