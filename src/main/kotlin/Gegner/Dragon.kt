@@ -39,7 +39,7 @@ class Dragon : Gegner() {
     var gespuckteFeuerbaelle = 0
     var feuerBaelleSpuckenRandomHeld = listOf<String>(
         "daneben",
-        "Helden.Magier",
+        "Magier",
         "daneben",
         "Helden.Ritter",
         "daneben",

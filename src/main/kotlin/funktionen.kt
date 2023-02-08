@@ -14,37 +14,39 @@ class funktionen {
 //        moench = Mönch()
 //    }
 
+    var magier = Magier()
+    var ritter = Ritter()
+    var moench = Mönch()
+
+    var drache1 = Dragon()
+    var drache2 = Dragon()
+    var drache3 = Dragon()
+
     var aktuelleRunde = 1
     val maximaleRunden = 5
     var magierFaehigkeitInput: String = ""
     var inputSchwierigkeitsstufeGegener = "1"
     val randomHeld = Helden().heldenListe.random()
-    val randomHeldFeuerBaelleSpucken = Dragon().feuerBaelleSpuckenRandomHeld.random()
+//    val randomHeldFeuerBaelleSpucken = Dragon().feuerBaelleSpuckenRandomHeld.random()
     var verursachterSchaden: Double = 0.0
-    val randomDrachenAngriff = Dragon().faehigkeiten.random()
+    val randomDrachenAngriff = drache1.faehigkeiten[5]
+//        Dragon().faehigkeiten.random()
     var heldenGesamtHP: Double = 0.0
 
-
-   var magier = Magier()
-   var ritter = Ritter()
-   var moench = Mönch()
 
 
     ////////// DRAGON //////////
     //Schwierigkeitsstufe [1]
-    var dragonHP1 = Dragon().dragonHP1
-    val dragonSchaden1 = Dragon().faehigkeitsSchaden1.random()
-    val drache1 = Dragon()
+    var dragonHP1 = drache1.dragonHP1
+    val dragonSchaden1 = drache1.faehigkeitsSchaden1.random()
 
     //Schwierigkeitsstufe [2]
-    var dragonHP2 = Dragon().dragonHP2
-    val dragonSchaden2 = Dragon().faehigkeitsSchaden2.random()
-    val drache2 = Dragon()
+    var dragonHP2 = drache2.dragonHP2
+    val dragonSchaden2 = drache2.faehigkeitsSchaden2.random()
 
     //Schwierigkeitsstufe [3]
-    var dragonHP3 = Dragon().dragonHP3
-    val dragonSchaden3 = Dragon().faehigkeitsSchaden3.random()
-    val drache3 = Dragon()
+    var dragonHP3 = drache3.dragonHP3
+    val dragonSchaden3 = drache3.faehigkeitsSchaden3.random()
 
     ////////// KLON //////////
     //Schwierigkeitsstufe [1]
@@ -905,19 +907,19 @@ class funktionen {
                 heroesLost()
             }
         }
-        if (randomDrachenAngriff == Dragon().faehigkeiten[5]) {
-            Dragon().gespuckteFeuerbaelle = 0
+        if (randomDrachenAngriff == drache1.faehigkeiten[5]) {
+            drache1.gespuckteFeuerbaelle = 1
             println("${drache1.name} hat Feuerregen aktiviert und spuckt 5 Feuerbälle in die Luft.")
             println("Wer wohl getroffen wird...")
             Thread.sleep(1000)
             println("Drache spuckt Feuerbälle...")
             Thread.sleep(5000)
             do {
-                Dragon().gespuckteFeuerbaelle++
-                println("Feuerball Nr. ${Dragon().gespuckteFeuerbaelle} fliegt durch die Luft und trifft:")
+                println("Feuerball Nr. ${drache1.gespuckteFeuerbaelle} fliegt durch die Luft und trifft:")
                 Thread.sleep(3000)
-                println(randomHeldFeuerBaelleSpucken)
-                when (randomHeldFeuerBaelleSpucken) {
+                var test = drache1.feuerBaelleSpuckenRandomHeld.random()
+                println(test)
+                when (test) {
                     "Helden.Magier" -> {
                         verursachterSchaden = drache1.feuerRegenSchaden.toDouble()
                         magier.hp = magier.hp - verursachterSchaden
@@ -927,21 +929,21 @@ class funktionen {
                     "Helden.Ritter" -> {
                         verursachterSchaden = drache1.feuerRegenSchaden.toDouble()
                         ritter.hp = ritter.hp - verursachterSchaden
-                        println("Helden.Ritter HP: ${magier.hp} (-${verursachterSchaden} HP) vs. Drache HP: ${dragonHP1}")
+                        println("Helden.Ritter HP: ${ritter.hp} (-${verursachterSchaden} HP) vs. Drache HP: ${dragonHP1}")
                     }
 
                     "Helden.Mönch" -> {
                         verursachterSchaden = drache1.feuerRegenSchaden.toDouble()
-                        moench.hp = magier.hp - verursachterSchaden
-                        println("Helden.Mönch HP: ${magier.hp} (-${verursachterSchaden} HP) vs. Drache HP: ${dragonHP1}")
+                        moench.hp = moench.hp - verursachterSchaden
+                        println("Helden.Mönch HP: ${moench.hp} (-${verursachterSchaden} HP) vs. Drache HP: ${dragonHP1}")
                     }
 
                     "daneben" -> {
                         println("Dieser Feuerball ging daneben!")
                     }
                 }
-
-            } while (Dragon().gespuckteFeuerbaelle <= Dragon().feuerbaelle)
+                drache1.gespuckteFeuerbaelle++
+            } while (drache1.gespuckteFeuerbaelle <= drache1.feuerbaelle)
         }
     }
 
