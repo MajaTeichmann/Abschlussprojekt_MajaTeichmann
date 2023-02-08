@@ -12,12 +12,12 @@ class Dragon : Gegner() {
     var feuerRegenSchaden = feuerRegenSchadenRange.random()
 
     override var faehigkeiten = mutableListOf<String>(
-        "Klon heraufbeschwören",
-        "Flächenschaden",
-        "Feueratem",
-        "HP-Klau",
-        "Stampfattacke",
-        "Feuerregen"
+        "Klon heraufbeschwören",    //0
+        "Flächenschaden",           //1
+        "Feueratem",                //2
+        "HP-Klau",                  //3
+        "Stampfattacke",            //4
+        "Feuerregen"                //5
     )
 
     override var verursachterSchadenDragon: Double = 0.0
