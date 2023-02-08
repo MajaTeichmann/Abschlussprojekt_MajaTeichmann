@@ -22,7 +22,7 @@ fun main(){
 //    var heldenGesamtHP: Double = 0.0
 //
 //    ////////// HELDEN //////////
-    val magier = Magier()
+//    val magier = Magier()
 //    val ritter = Ritter()
 //    val moench = Mönch()
 //

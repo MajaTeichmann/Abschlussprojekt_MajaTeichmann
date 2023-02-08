@@ -5,14 +5,14 @@ import Helden.Magier
 import Helden.Mönch
 import Helden.Ritter
 
-class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
+class funktionen {
 
-    init {
-        ////////// HELDEN //////////
-        magier = Magier()
-        ritter = Ritter()
-        moench = Mönch()
-    }
+//    init {
+//        ////////// HELDEN //////////
+//        magier = Magier()
+//        ritter = Ritter()
+//        moench = Mönch()
+//    }
 
     var aktuelleRunde = 1
     val maximaleRunden = 5
@@ -23,6 +23,11 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
     var verursachterSchaden: Double = 0.0
     val randomDrachenAngriff = Dragon().faehigkeiten.random()
     var heldenGesamtHP: Double = 0.0
+
+
+   var magier = Magier()
+   var ritter = Ritter()
+   var moench = Mönch()
 
 
     ////////// DRAGON //////////
@@ -139,7 +144,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                 if (dragonHP1 > 0 || magier.hp > 0 || ritter.hp > 0 || moench.hp > 0) {
                     if (!magier.betaeubt) {
                         if (dragonHP1 > 0 && magier.hp > 0) {
-                            funktionen().magierAngriffStufe1()
+                            magierAngriffStufe1()
                             println()
                         } else {
                             magier.hp = 0.0
@@ -151,7 +156,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                     }
                     if (!ritter.betaeubt) {
                         if (dragonHP1 > 0 && ritter.hp > 0) {
-                            funktionen().ritterAngriffStufe1()
+                            ritterAngriffStufe1()
                             println()
                         } else {
                             ritter.hp = 0.0
@@ -163,7 +168,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                     }
                     if (!moench.betaeubt) {
                         if (dragonHP1 > 0 && moench.hp > 0) {
-                            funktionen().moenchAngriffStufe1()
+                            moenchAngriffStufe1()
                             println()
                         } else {
                             moench.hp = 0.0
@@ -174,12 +179,12 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                         moench.betaeubt = false
                     }
                     if (dragonHP1 > 0) {
-                        funktionen().drachenAngriffStufe1()
+                        drachenAngriffStufe1()
                         println()
                     } else {
                         dragonHP1 = 0.0
                         println("Drache: $dragonHP1 HP")
-                        funktionen().dragonLost()
+                        dragonLost()
                     }
                 } else {
                     println("Spiel vorbei!")
@@ -191,21 +196,21 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                         println()
                     } else {
                         magier.hp = 0.0
-                        println("Helden.Magier: ${magier.hp} HP")
+                        println("Magier: ${magier.hp} HP")
                     }
                     if (dragonHP2 > 0 && ritter.hp > 0) {
                         funktionen().ritterAngriffStufe2()
                         println()
                     } else {
                         ritter.hp = 0.0
-                        println("Helden.Ritter: ${ritter.hp} HP")
+                        println("Ritter: ${ritter.hp} HP")
                     }
                     if (dragonHP2 > 0 && moench.hp > 0) {
                         funktionen().moenchAngriffStufe2()
                         println()
                     } else {
                         moench.hp = 0.0
-                        println("Helden.Mönch: ${moench.hp} HP")
+                        println("Mönch: ${moench.hp} HP")
                     }
                     if (dragonHP2 > 0) {
                         funktionen().drachenAngriffStufe2()
@@ -226,21 +231,21 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                         println()
                     } else {
                         magier.hp = 0.0
-                        println("Helden.Magier: ${magier.hp} HP")
+                        println("Magier: ${magier.hp} HP")
                     }
                     if (dragonHP3 > 0 && ritter.hp > 0) {
                         ritterAngriffStufe3()
                         println()
                     } else {
                         ritter.hp = 0.0
-                        println("Helden.Ritter: ${ritter.hp} HP")
+                        println("Ritter: ${ritter.hp} HP")
                     }
                     if (dragonHP3 > 0 && moench.hp > 0) {
                         moenchAngriffStufe3()
                         println()
                     } else {
                         moench.hp = 0.0
-                        println("Helden.Mönch: ${moench.hp} HP")
+                        println("Mönch: ${moench.hp} HP")
                     }
                     if (dragonHP2 > 0) {
                         drachenAngriffStufe3()
@@ -485,7 +490,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
 
     fun ritterAngriffStufe1() {
         println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}")
-        println("Wähle eine Helden.Ritter-Fähigkeit")
+        println("Wähle eine Ritter-Fähigkeit")
         Thread.sleep(800)
         println("[1] ${ritter.faehigkeiten[0]}")
         println("[2] ${ritter.faehigkeiten[1]}")
@@ -543,7 +548,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
 
     fun moenchAngriffStufe1() {
         println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1}")
-        println("Wähle eine Helden.Mönch-Fähigkeit")
+        println("Wähle eine Mönch-Fähigkeit")
         Thread.sleep(800)
         println("[1] ${moench.faehigkeiten[0]}")
         println("[2] ${moench.faehigkeiten[1]}")
@@ -621,7 +626,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                             magier.schutzSchildMöglich = false
                             magier.schutzschildNutzbarkeit = false
                         }
-                        println("\nHelden.Magier HP: ${magier.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                        println("\nMagier HP: ${magier.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                     } else if (magier.doppelterSchadenEingesetzt) {
                         magier.doppelterSchadenNutzbarkeit = false
                         println("Weil ${magier.name} seine 'doppelter Schaden' Fähigkeit eingesetzt hat, erhält der Drache seinen eingesetzten Schaden verdoppelt zurück.")
@@ -632,12 +637,12 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                         verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
                         magier.hp = (magier.hp - verursachterSchaden)
                         Thread.sleep(1000)
-                        println("\nHelden.Magier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                        println("\nMagier HP: ${magier.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
 
                     }
                 }
                 if (ritter.hp > 0) {
-                    println("Helden.Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                     println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
                     println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
                     if (ritter.schutzschildGezogen) {
@@ -650,16 +655,16 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                             ritter.schutzschildGezogen = false
                             ritter.unverwundbar = false
                         }
-                        println("\nHelden.Ritter HP: ${ritter.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                        println("\nRitter HP: ${ritter.hp} (-0) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                     } else {
                         verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
                         ritter.hp = (ritter.hp - verursachterSchaden)
                         Thread.sleep(1000)
-                        println("\nHelden.Ritter HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                        println("\nRitter HP: ${ritter.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                     }
                 }
                 if (moench.hp > 0) {
-                    println("Helden.Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                     println("\nDer Drache greift mit einem Schaden von ${dragonSchaden1} an.")
                     println("Sein Klon greift mit einem Schaden von ${dragonKlonSchaden1} an.")
                     if (moench.schwebenAktiv) {
@@ -668,7 +673,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
                     verursachterSchaden = dragonSchaden1 + dragonKlonSchaden1
                     Thread.sleep(1000)
                     moench.hp = (moench.hp - verursachterSchaden)
-                    println("\nHelden.Mönch HP: ${moench.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
+                    println("\nMönch HP: ${moench.hp} (-${verursachterSchaden}) vs. Drachen HP: ${dragonHP1} & Klon HP: ${dragonKlonHP1}")
                 }
                 if (magier.hp <= 0 && ritter.hp <= 0 && moench.hp <= 0) {
                     heroesLost()
@@ -679,7 +684,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
             println("${drache1.name} setzt 'Flächenschaden' ein...")
             println("\nDer Drache greift mit einem Schaden von ${drache1.flaechenSchaden} an.")
             if (magier.hp > 0) {
-                println("Helden.Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
+                println("Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}")
                 if (magier.schutzschildGezogen) {
                     println("Obwohl ${magier.name} aktiv ein Schutzschild ausgerüstet hat, konnte dieser die Bodenattacke nicht abwehren.")
                     verursachterSchaden = drache1.flaechenSchaden.toDouble()
@@ -1271,7 +1276,7 @@ class funktionen(var magier: Magier, var ritter: Ritter, var moench: Mönch) {
     ///////////////////////////////////////////////////////
 
     fun dragonLost() {
-        println("Der Drache ist tot und die Helden.Helden haben gewonnen!")
+        println("Der Drache ist tot und die Helden haben gewonnen!")
         println()
         println("\nDas Spiel ist vorbei!")
     }
