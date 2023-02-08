@@ -8,6 +8,4 @@ import Helden.Ritter
 fun main() {
     funktionen().start()
     funktionen().einleitung()
-
-    var spiel: funktionen = funktionen()
 }
