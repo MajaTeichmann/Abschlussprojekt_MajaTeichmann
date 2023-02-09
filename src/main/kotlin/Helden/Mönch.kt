@@ -14,17 +14,12 @@ class Mönch : Helden(){
     override var faehigkeiten = mutableListOf<String>(
         "Schweben (immun gegen Bodenattacken, 1x alle 4 Runden nutzbar)",     // weicht Bodenattacken aus (1x alle 4 Runden möglich)
         "Meditation (heilt um 5% Gesamt-HP, 1x möglich)",   // Selbstheilung durch Meditation um 5% -> 1x möglich
-        "Schockwelle"   // Schockwelle entsenden
+        "Schockwelle (normaler Angriff)"   // Schockwelle entsenden
     )
 
     var schwebenAktiv = false
     var schweben = false
     var schwebenAbklingdauer = 0
     var selbstHeilungNutzbarkeit = true
-
-    override fun showFaehigkeiten() {
-        println("${name}'s Fähigkeiten:")
-        println(faehigkeiten)
-    }
 
 }

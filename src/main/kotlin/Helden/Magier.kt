@@ -23,21 +23,9 @@ class Magier: Helden() {
 
 
     override var faehigkeiten = mutableListOf<String>(
-        "Schutzschild (1 Runde Schutz, 1x alle 3 Runden nutzbar)",
+        "Schutzschild (blockt (nicht Boden-)Angriffe, 1 Runde Schutz, 1x alle 3 Runden nutzbar)",
         "doppelter Schaden (schickt verursachten Schaden durch Gegner x2 zurück, 1x alle 3 Runden nutzbar)",
         "normaler Angriff"
         )
 
-    // Beutel mit Zaubertränken (eigene Anwendung und Fremdanwendung)
-    var beutel = mutableListOf<String>(
-        "Schutzzauber",
-        "Schutzzauber", // (halbiert 1 Runde den erhaltenen Schaden auf Anwender)
-        "Heilzauber", // heilt Anwender einmalig um 10% Gesamt-HP (mind. 5 HP)
-        "Betaeubungszauber" // Betäubt Gegner.Gegner 1 Runde und macht 2% Gesamtschaden)
-    )
-
-    fun showBeutel() {
-        println("${name}'s Beutelitems:")
-        println(beutel)
-    }
 }
