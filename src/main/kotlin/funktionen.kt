@@ -59,10 +59,15 @@ class funktionen {
     val dragonKlonSchaden3: Double = dragonSchaden3 + (dragonSchaden3 * 0.2)
 
     //----------------------------------------------------------------------------------------------------------------------
+
+//////////////////// PROGRAMMFLUSS ////////////////////
+
+    ////////// SCHRITT 1 //////////
     fun start() {
         begruessung()
     }
 
+    ////////// SCHRITT 2 //////////
     fun begruessung() {
         println("Hallo und herzlich Willkommen zu meinem Videospiel!")
         Thread.sleep(1500)
@@ -74,6 +79,7 @@ class funktionen {
         pausenmenue()
     }
 
+    ////////// SCHRITT 3 //////////
     fun pausenmenue() {
         println("PAUSENMENÜ\n")
         println("Was möchtest du tun?")
@@ -102,6 +108,7 @@ class funktionen {
         pausenmenue()
     }
 
+    ////////// SCHRITT 4.1 //////////
     // Pausenmenü-Eingabe [1]
     fun magierVorstellung() {
         println("\nHallo, ich bin ${magier.name} und ich bin ein ${magier.heldenArt} 🧙🏼‍🪄 .")
@@ -153,6 +160,7 @@ class funktionen {
         println("                        ${moench.faehigkeiten[2]}\n\n")
     }
 
+    ////////// SCHRITT 4.2 //////////
     // Pausenmenü-Eingabe [2]
     fun dracheVoreinstellungen() {
         println("\n\nBevor wir mit dem Spiel starten können, möchte ich wissen, wie stark der Drache 🐉 sein soll.")
@@ -242,10 +250,12 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 5 //////////
     fun spielStarten() {
         einleitung()
     }
 
+    ////////// SCHRITT 6 //////////
     fun einleitung() {
         println("Unseren drei tapferen Helden ${magier.name} (${magier.heldenArt}), ${ritter.name} (${ritter.heldenArt}) und ${moench.name} (${moench.heldenArt})")
         Thread.sleep(1000)
@@ -273,6 +283,7 @@ class funktionen {
         kampfBeginnt()
     }
 
+    ////////// SCHRITT 7 //////////
     fun kampfBeginnt() {
         while (aktuelleRunde <= maximaleRunden && dragonHP1 > 0 && (magier.hp > 0 || ritter.hp > 0 || moench.hp > 0)) {
             println("\nRunde ${aktuelleRunde}:\n")
@@ -478,6 +489,7 @@ class funktionen {
         println("${magier.hp + ritter.hp + moench.hp} vs. ${dragonHP1}\n")
     }
 
+    ////////// SCHRITT 8.1.1 //////////
     // GegnerSchwierigkeitsStufe 1
     fun magierAngriffStufe1() {
         println("\n[Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP1}]")
@@ -545,6 +557,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.1.2 //////////
     fun ritterAngriffStufe1() {
         println("\n[Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP1}]")
         Thread.sleep(1000)
@@ -618,6 +631,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.1.3 //////////
     fun moenchAngriffStufe1() {
         println("\n[Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP1}]")
         Thread.sleep(1000)
@@ -682,6 +696,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.1.4 //////////
     fun drachenAngriffStufe1() {
         println(
             """
@@ -1179,6 +1194,57 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.1.5.1 //////////
+    fun dragonLostStufe1() {
+        println("Die Helden haben gewonnen! 🎉")
+        Thread.sleep(1000)
+        println("${heldenGesamtHP} vs. ${dragonHP1} ✝️\n")
+        Thread.sleep(1000)
+        println("\nDas Spiel ist vorbei!")
+        println(
+            """\||/
+                |  @___oo
+      /\  /\   / (__,,,,|
+     ) /^\) ^\/ _)
+     )   /^\/   _)
+     )   _ /  / _)
+ /\  )/\/ ||  | )_)
+<  >      |(,,) )__)
+ ||      /    \)___)\
+ | \____(      )___) )___
+  \______(_______;;; __;;;"""
+        )
+    }
+
+    ////////// SCHRITT 8.1.5.2 //////////
+    fun heroesLostStufe1() {
+        println("Der Drache hat gewonnen! 😭")
+        if (magier.hp <= 0) {
+            magier.hp = 0.0
+            println("${magier.hp} ✝️ vs. ${dragonHP1}")
+        } else {
+            println("${magier.hp} vs. ${dragonHP1}")
+        }
+        if (ritter.hp <= 0) {
+            ritter.hp = 0.0
+            println("${ritter.hp} ✝️ vs. ${dragonHP1}")
+        } else {
+            println("${ritter.hp} vs. ${dragonHP1}")
+        }
+        if (moench.hp <= 0) {
+            moench.hp = 0.0
+            println("${moench.hp} ✝️ vs. ${dragonHP1}")
+        } else {
+            println("${moench.hp} vs. ${dragonHP1}")
+        }
+        Thread.sleep(1000)
+        println("\n${heldenGesamtHP} vs. ${dragonHP1}\n")
+        Thread.sleep(1000)
+        println("\nDas Spiel ist vorbei!")
+    }
+
+
+    ////////// SCHRITT 8.2.1 //////////
     // GegnerSchwierigkeitsStufe 2
     fun magierAngriffStufe2() {
         println("\n[Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP2}]")
@@ -1246,6 +1312,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.2.2 //////////
     fun ritterAngriffStufe2() {
         println("\n[Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP2}]")
         Thread.sleep(1000)
@@ -1319,6 +1386,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.2.3 //////////
     fun moenchAngriffStufe2() {
         println("\n[Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP2}]")
         Thread.sleep(1000)
@@ -1383,6 +1451,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.2.4 //////////
     fun drachenAngriffStufe2() {
         println(
             """
@@ -1868,6 +1937,41 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.2.5.1 //////////
+    fun dragonLostStufe2() {
+        println("Die Helden haben gewonnen!")
+        println("${heldenGesamtHP} vs. ${dragonHP2}")
+        println()
+        println("\nDas Spiel ist vorbei!")
+        println(
+            """\||/
+                |  @___oo
+      /\  /\   / (__,,,,|
+     ) /^\) ^\/ _)
+     )   /^\/   _)
+     )   _ /  / _)
+ /\  )/\/ ||  | )_)
+<  >      |(,,) )__)
+ ||      /    \)___)\
+ | \____(      )___) )___
+  \______(_______;;; __;;;"""
+        )
+    }
+
+    ////////// SCHRITT 8.2.5.2 //////////
+    fun heroesLostStufe2() {
+        println("Der Drache hat gewonnen!")
+        println("${magier.hp} vs. ${dragonHP2}")
+        println("${ritter.hp} vs. ${dragonHP2}")
+        println("${moench.hp} vs. ${dragonHP2}")
+
+        println("\n${heldenGesamtHP} vs. ${dragonHP2}")
+        println()
+        println("\nDas Spiel ist vorbei!")
+    }
+
+
+    ////////// SCHRITT 8.3.1 //////////
     // GegnerSchwierigkeitsStufe 3
     fun magierAngriffStufe3() {
         println("\n[Magier HP: ${magier.hp} vs. Drachen HP: ${dragonHP3}]")
@@ -1935,6 +2039,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.3.2 //////////
     fun ritterAngriffStufe3() {
         println("\n[Ritter HP: ${ritter.hp} vs. Drachen HP: ${dragonHP3}]")
         Thread.sleep(1000)
@@ -2008,6 +2113,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.3.3 //////////
     fun moenchAngriffStufe3() {
         println("\n[Mönch HP: ${moench.hp} vs. Drachen HP: ${dragonHP3}]")
         Thread.sleep(1000)
@@ -2072,6 +2178,7 @@ class funktionen {
         }
     }
 
+    ////////// SCHRITT 8.3.4 //////////
     fun drachenAngriffStufe3() {
         println(
             """
@@ -2557,47 +2664,7 @@ class funktionen {
         }
     }
 
-    fun dragonLostStufe1() {
-        println("Die Helden haben gewonnen! 🎉")
-        Thread.sleep(1000)
-        println("${heldenGesamtHP} vs. ${dragonHP1} ✝️\n")
-        Thread.sleep(1000)
-        println("\nDas Spiel ist vorbei!")
-        println(
-            """\||/
-                |  @___oo
-      /\  /\   / (__,,,,|
-     ) /^\) ^\/ _)
-     )   /^\/   _)
-     )   _ /  / _)
- /\  )/\/ ||  | )_)
-<  >      |(,,) )__)
- ||      /    \)___)\
- | \____(      )___) )___
-  \______(_______;;; __;;;"""
-        )
-    }
-
-    fun dragonLostStufe2() {
-        println("Die Helden haben gewonnen!")
-        println("${heldenGesamtHP} vs. ${dragonHP2}")
-        println()
-        println("\nDas Spiel ist vorbei!")
-        println(
-            """\||/
-                |  @___oo
-      /\  /\   / (__,,,,|
-     ) /^\) ^\/ _)
-     )   /^\/   _)
-     )   _ /  / _)
- /\  )/\/ ||  | )_)
-<  >      |(,,) )__)
- ||      /    \)___)\
- | \____(      )___) )___
-  \______(_______;;; __;;;"""
-        )
-    }
-
+    ////////// SCHRITT 8.3.5.1 //////////
     fun dragonLostStufe3() {
         println("Die Helden haben gewonnen!")
         println("${heldenGesamtHP} vs. ${dragonHP3}")
@@ -2618,43 +2685,7 @@ class funktionen {
         )
     }
 
-    fun heroesLostStufe1() {
-        println("Der Drache hat gewonnen! 😭")
-        if (magier.hp <= 0) {
-            magier.hp = 0.0
-            println("${magier.hp} ✝️ vs. ${dragonHP1}")
-        } else {
-            println("${magier.hp} vs. ${dragonHP1}")
-        }
-        if (ritter.hp <= 0) {
-            ritter.hp = 0.0
-            println("${ritter.hp} ✝️ vs. ${dragonHP1}")
-        } else {
-            println("${ritter.hp} vs. ${dragonHP1}")
-        }
-        if (moench.hp <= 0) {
-            moench.hp = 0.0
-            println("${moench.hp} ✝️ vs. ${dragonHP1}")
-        } else {
-            println("${moench.hp} vs. ${dragonHP1}")
-        }
-        Thread.sleep(1000)
-        println("\n${heldenGesamtHP} vs. ${dragonHP1}\n")
-        Thread.sleep(1000)
-        println("\nDas Spiel ist vorbei!")
-    }
-
-    fun heroesLostStufe2() {
-        println("Der Drache hat gewonnen!")
-        println("${magier.hp} vs. ${dragonHP2}")
-        println("${ritter.hp} vs. ${dragonHP2}")
-        println("${moench.hp} vs. ${dragonHP2}")
-
-        println("\n${heldenGesamtHP} vs. ${dragonHP2}")
-        println()
-        println("\nDas Spiel ist vorbei!")
-    }
-
+    ////////// SCHRITT 8.3.5.2 //////////
     fun heroesLostStufe3() {
         println("Der Drache hat gewonnen!")
         println("${magier.hp} vs. ${dragonHP3}")
