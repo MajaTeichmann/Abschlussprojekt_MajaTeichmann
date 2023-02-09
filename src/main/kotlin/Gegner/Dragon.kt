@@ -1,7 +1,5 @@
 package Gegner
-
 class Dragon : Gegner() {
-
     val flaechenSchadenRange = 150..300
     val flaechenSchaden = flaechenSchadenRange.random()
 
@@ -19,11 +17,8 @@ class Dragon : Gegner() {
         "Stampfattacke",            //4
         "Feuerregen"                //5
     )
-
     override var verursachterSchadenDragon: Double = 0.0
-
     val name = Gegner().dragonNamen.random()
-
     val hpDragon1: IntRange = 450..650
     var dragonHP1 = hpDragon1.random().toDouble()
     val hpDragon2: IntRange = 660..850

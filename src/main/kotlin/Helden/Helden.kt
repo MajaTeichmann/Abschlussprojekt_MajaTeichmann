@@ -3,9 +3,6 @@ package Helden
 open class Helden{
 
     open var faehigkeiten = mutableListOf<String>()
-    open fun showFaehigkeiten(){
-        println(faehigkeiten)
-    }
 
     open var heldenArt: String = ""
 
@@ -114,5 +111,4 @@ open class Helden{
         "Flame"
     )
     open val faehigkeitsSchaden: IntRange = 35..70
-
 }
